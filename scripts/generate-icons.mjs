@@ -1,44 +1,88 @@
 // Generates the favicons in src/app/ (Next.js adds the <link> tags automatically):
 //   icon1.svg (modern browsers), icon2.png (512×512, Android/search results), apple-icon.png (180×180, iOS),
 //   favicon.ico (16–256 px).
-// Run with `just icons` after changing the text or colours below. The output is committed.
+// The icon is a glowing sun in the site's coral orange: a mottled disc, a bright gold rim and a wispy corona,
+// modelled on a photo of the sun. Run `just icons` after changing the settings below. The output is committed.
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import opentype from 'opentype.js';
 
 const ROOT = process.cwd();
 const OUT = path.join(ROOT, 'src', 'app');
-const TEXT = 'HD';
-const BG = '#100D0C';
-const FG = '#EDE6DA';
 
-const font = opentype.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'fonts', 'Newsreader-MediumItalic.ttf')).buffer);
+// Colours (coral, matching the site's --accent orange).
+const SUN = {
+  core: '#F07A4F', // centre of the disc
+  body: '#E4572E', // most of the disc (--accent)
+  edge: '#EE7A3A', // just inside the rim
+  limb: '#F2C230', // the bright rim (--yellow)
+  corona: '#F07A4F', // the glow around the disc
+  wisp: '#F6A65A', // the thin streaks in the corona
+  spot: '#8A2410', // the darker mottling on the surface
+};
+const RADIUS = 19; // disc radius (the icon is a 64-unit box, so 32 reaches the edge)
+const WISPS = 70; // number of streaks in the corona
+const MOTTLE = 0.7; // strength of the surface mottling (0 = smooth disc)
+const SEED = 11; // change for a different (but still fixed) arrangement of streaks
+const APPLE_BG = '#100D0C'; // iOS fills transparent icons with black, so the home-screen icon gets the site's dark background
 
-/** SVG for the icon at a 64-unit viewBox; the text is scaled to fit and centred using its real bounding box. */
-function svg() {
-  // Largest size that keeps the text within 50 units wide and 40 tall.
-  const ref = font.getPath(TEXT, 0, 0, 100).getBoundingBox();
-  const size = Math.min(50, (100 * 50) / (ref.x2 - ref.x1), (100 * 40) / (ref.y2 - ref.y1));
-  const bb = font.getPath(TEXT, 0, 0, size).getBoundingBox();
-  const w = bb.x2 - bb.x1;
-  const h = bb.y2 - bb.y1;
-  const x = (64 - w) / 2 - bb.x1;
-  const y = (58 - h) / 2 - bb.y1; // sit slightly high to leave room for the horizon line
-  const d = font.getPath(TEXT, x, y, size).toPathData(2);
+/** Small seeded random generator, so the streaks come out identical on every run. */
+function random(seed) {
+  return () => {
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const rgb = (hex) => [1, 3, 5].map((i) => (parseInt(hex.slice(i, i + 2), 16) / 255).toFixed(3));
+
+/** The sun at a 64-unit viewBox. `scale` shrinks everything around the centre (the apple icon needs padding). */
+function svg({ background, scale = 1 } = {}) {
+  const R = RADIUS;
+  const rand = random(SEED);
+  let wisps = '';
+  for (let i = 0; i < WISPS; i++) {
+    const a = rand() * Math.PI * 2;
+    const len = 3 + rand() * 9;
+    const w = 0.25 + rand() * 0.7;
+    const r0 = R - 0.5;
+    const r1 = R + len;
+    const [x0, y0] = [32 + r0 * Math.cos(a), 32 + r0 * Math.sin(a)];
+    const [x1, y1] = [32 + r1 * Math.cos(a), 32 + r1 * Math.sin(a)];
+    const [px, py] = [-Math.sin(a) * w, Math.cos(a) * w];
+    const f = (n) => n.toFixed(2);
+    wisps += `    <path d="M${f(x0 + px)},${f(y0 + py)}L${f(x1)},${f(y1)}L${f(x0 - px)},${f(y0 - py)}Z" fill="${SUN.wisp}" opacity="${(0.15 + rand() * 0.35).toFixed(2)}"/>\n`;
+  }
+  const [sr, sg, sb] = rgb(SUN.spot);
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="horizon" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#E4572E" stop-opacity="0"/>
-      <stop offset="0.25" stop-color="#E4572E"/>
-      <stop offset="0.5" stop-color="#F2C230"/>
-      <stop offset="0.75" stop-color="#E4572E"/>
-      <stop offset="1" stop-color="#E4572E" stop-opacity="0"/>
-    </linearGradient>
+    <radialGradient id="corona" cx="32" cy="32" r="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0.55" stop-color="${SUN.limb}"/>
+      <stop offset="0.63" stop-color="${SUN.corona}" stop-opacity="0.75"/>
+      <stop offset="0.78" stop-color="${SUN.corona}" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="${SUN.corona}" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="disc" cx="32" cy="32" r="${R}" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="${SUN.core}"/>
+      <stop offset="0.75" stop-color="${SUN.body}"/>
+      <stop offset="0.94" stop-color="${SUN.edge}"/>
+      <stop offset="1" stop-color="${SUN.limb}"/>
+    </radialGradient>
+    <filter id="mottle" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.21" numOctaves="3" seed="5" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 ${sr}  0 0 0 0 ${sg}  0 0 0 0 ${sb}  0 0 0 -3.4 1.95"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.7"/></filter>
   </defs>
-  <rect width="64" height="64" rx="14" fill="${BG}"/>
-  <rect x="8" y="53" width="48" height="3" rx="1.5" fill="url(#horizon)"/>
-  <path d="${d}" fill="${FG}"/>
+${background ? `  <rect width="64" height="64" fill="${background}"/>\n` : ''}  <g transform="translate(32 32) scale(${scale}) translate(-32 -32)">
+    <circle cx="32" cy="32" r="32" fill="url(#corona)"/>
+${wisps}    <circle cx="32" cy="32" r="${R}" fill="url(#disc)"/>
+    <circle cx="32" cy="32" r="${R}" fill="#000" filter="url(#mottle)" opacity="${MOTTLE}"/>
+    <circle cx="32" cy="32" r="${R - 0.3}" fill="none" stroke="${SUN.limb}" stroke-width="1.4" opacity="0.55" filter="url(#soft)"/>
+  </g>
 </svg>
 `;
 }
@@ -72,15 +116,15 @@ fs.writeFileSync(path.join(OUT, 'icon1.svg'), source);
 // Render well above the target size, then downscale, so edges stay crisp.
 const png = (size, svgSource = source) => sharp(Buffer.from(svgSource), { density: Math.ceil(72 * (size / 64) * 4) }).resize(size, size).png().toBuffer();
 
-fs.writeFileSync(path.join(OUT, 'icon2.png'), await png(512));
+// The 512px icon is only for Android / search results; a 256-colour palette keeps it small with no visible loss.
+fs.writeFileSync(path.join(OUT, 'icon2.png'), await sharp(await png(512)).png({ palette: true, colours: 256, compressionLevel: 9 }).toBuffer());
 
-// iOS draws its own rounded corners, so the apple icon is a full square.
-const square = source.replace('rx="14"', 'rx="0"');
-const apple = await png(180, square);
+// iOS draws its own rounded corners, so the apple icon is a full square with padding around the star.
+const apple = await png(180, svg({ background: APPLE_BG, scale: 0.9 }));
 fs.writeFileSync(path.join(OUT, 'apple-icon.png'), apple);
 
-// Largest first: browsers pick the best fit, and Next.js reads the first entry for the sizes attribute.
-const icoSizes = [256, 128, 64, 48, 32, 16];
+// Only small sizes: browsers that want bigger use icon1.svg / icon2.png. Largest first (Next.js reads it for `sizes`).
+const icoSizes = [48, 32, 16];
 fs.writeFileSync(path.join(OUT, 'favicon.ico'), ico(await Promise.all(icoSizes.map(async (size) => ({ size, data: await png(size) })))));
 
 console.log('✓ src/app/icon1.svg, icon2.png, apple-icon.png and favicon.ico written');

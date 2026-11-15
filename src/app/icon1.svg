@@ -1,14 +1,98 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="horizon" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#E4572E" stop-opacity="0"/>
-      <stop offset="0.25" stop-color="#E4572E"/>
-      <stop offset="0.5" stop-color="#F2C230"/>
+    <radialGradient id="corona" cx="32" cy="32" r="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0.55" stop-color="#F2C230"/>
+      <stop offset="0.63" stop-color="#F07A4F" stop-opacity="0.75"/>
+      <stop offset="0.78" stop-color="#F07A4F" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F07A4F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="disc" cx="32" cy="32" r="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F07A4F"/>
       <stop offset="0.75" stop-color="#E4572E"/>
-      <stop offset="1" stop-color="#E4572E" stop-opacity="0"/>
-    </linearGradient>
+      <stop offset="0.94" stop-color="#EE7A3A"/>
+      <stop offset="1" stop-color="#F2C230"/>
+    </radialGradient>
+    <filter id="mottle" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.21" numOctaves="3" seed="5" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0.541  0 0 0 0 0.141  0 0 0 0 0.063  0 0 0 -3.4 1.95"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="0.7"/></filter>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#100D0C"/>
-  <rect x="8" y="53" width="48" height="3" rx="1.5" fill="url(#horizon)"/>
-  <path d="M29.10 29.08L14.55 29.08L14.88 28.14L29.45 28.14L29.10 29.08ZM9.82 39.14L16.02 18.84L13.56 18.19L13.65 17.86L22.69 17.86L22.59 18.19L19.87 18.86L13.68 39.16L16.13 39.81L16.03 40.14L7.00 40.14L7.11 39.81L9.82 39.14ZM23.90 39.14L30.08 18.84L27.65 18.19L27.73 17.86L36.77 17.86L36.67 18.19L33.96 18.86L27.78 39.16L30.21 39.81L30.12 40.14L21.08 40.14L21.17 39.81L23.90 39.14ZM36.74 39.20L41.94 39.20Q43.82 39.20 45.51 38.56Q47.20 37.91 48.61 36.69Q50.02 35.46 51.06 33.74Q52.09 32.02 52.67 29.84Q53.25 27.66 53.25 25.12L53.25 25.12Q53.25 23.11 52.51 21.70Q51.77 20.29 50.33 19.55Q48.90 18.80 46.80 18.80L46.80 18.80L43.29 18.80L43.29 17.86L46.98 17.86Q49.96 17.86 52.22 18.83Q54.48 19.79 55.74 21.66Q57 23.52 57 26.23L57 26.23Q57 29.02 55.97 31.53Q54.94 34.05 52.96 35.98Q50.97 37.91 48.11 39.02Q45.26 40.14 41.61 40.14L41.61 40.14L36.47 40.14L36.74 39.20ZM35.05 39.14L41.25 18.84L38.79 18.19L38.88 17.86L45.41 17.86L38.62 40.14L32.23 40.14L32.34 39.81L35.05 39.14Z" fill="#EDE6DA"/>
+  <g transform="translate(32 32) scale(1) translate(-32 -32)">
+    <circle cx="32" cy="32" r="32" fill="url(#corona)"/>
+    <path d="M13.60,29.98L5.30,30.05L13.50,31.33Z" fill="#F6A65A" opacity="0.36"/>
+    <path d="M43.19,17.27L47.88,10.36L42.70,16.91Z" fill="#F6A65A" opacity="0.34"/>
+    <path d="M17.95,19.95L11.69,15.68L17.21,20.87Z" fill="#F6A65A" opacity="0.45"/>
+    <path d="M15.44,40.28L7.44,45.51L16.14,41.55Z" fill="#F6A65A" opacity="0.21"/>
+    <path d="M39.56,48.89L42.63,54.06L40.51,48.44Z" fill="#F6A65A" opacity="0.28"/>
+    <path d="M16.26,22.25L11.89,20.53L15.60,23.41Z" fill="#F6A65A" opacity="0.35"/>
+    <path d="M15.48,40.36L6.21,46.52L16.28,41.78Z" fill="#F6A65A" opacity="0.42"/>
+    <path d="M23.99,48.68L20.62,57.15L24.76,49.03Z" fill="#F6A65A" opacity="0.17"/>
+    <path d="M31.40,13.50L30.24,1.25L30.49,13.56Z" fill="#F6A65A" opacity="0.20"/>
+    <path d="M31.89,13.49L30.98,6.90L30.61,13.54Z" fill="#F6A65A" opacity="0.35"/>
+    <path d="M43.14,17.21L45.15,12.78L41.75,16.26Z" fill="#F6A65A" opacity="0.44"/>
+    <path d="M17.94,44.03L15.35,46.73L18.35,44.49Z" fill="#F6A65A" opacity="0.44"/>
+    <path d="M13.50,31.88L5.27,32.46L13.51,32.76Z" fill="#F6A65A" opacity="0.33"/>
+    <path d="M30.87,13.52L29.74,9.31L29.47,13.66Z" fill="#F6A65A" opacity="0.17"/>
+    <path d="M14.29,37.43L5.95,41.46L14.93,39.20Z" fill="#F6A65A" opacity="0.30"/>
+    <path d="M13.86,35.63L7.39,37.31L13.98,36.18Z" fill="#F6A65A" opacity="0.41"/>
+    <path d="M15.60,40.57L6.78,45.98L16.04,41.37Z" fill="#F6A65A" opacity="0.34"/>
+    <path d="M21.04,46.91L14.94,56.17L21.63,47.32Z" fill="#F6A65A" opacity="0.19"/>
+    <path d="M19.60,18.27L13.13,11.84L19.11,18.73Z" fill="#F6A65A" opacity="0.28"/>
+    <path d="M18.12,44.26L10.13,53.16L19.29,45.47Z" fill="#F6A65A" opacity="0.37"/>
+    <path d="M15.97,41.27L6.35,48.08L16.68,42.39Z" fill="#F6A65A" opacity="0.30"/>
+    <path d="M25.18,49.20L22.53,56.89L25.66,49.38Z" fill="#F6A65A" opacity="0.46"/>
+    <path d="M25.79,49.43L23.82,56.34L26.43,49.64Z" fill="#F6A65A" opacity="0.18"/>
+    <path d="M32.04,13.49L31.17,5.11L30.82,13.53Z" fill="#F6A65A" opacity="0.19"/>
+    <path d="M15.10,24.42L6.32,21.89L14.47,26.03Z" fill="#F6A65A" opacity="0.49"/>
+    <path d="M17.29,20.77L9.62,16.13L16.53,21.83Z" fill="#F6A65A" opacity="0.32"/>
+    <path d="M46.94,42.93L55.10,47.58L47.73,41.76Z" fill="#F6A65A" opacity="0.50"/>
+    <path d="M27.80,13.98L26.30,9.49L27.12,14.15Z" fill="#F6A65A" opacity="0.38"/>
+    <path d="M50.37,29.66L56.71,27.62L50.06,27.89Z" fill="#F6A65A" opacity="0.28"/>
+    <path d="M33.54,13.56L33.87,4.18L32.94,13.52Z" fill="#F6A65A" opacity="0.25"/>
+    <path d="M23.08,15.78L18.40,9.33L21.89,16.49Z" fill="#F6A65A" opacity="0.23"/>
+    <path d="M28.63,13.81L27.06,7.66L28.01,13.93Z" fill="#F6A65A" opacity="0.34"/>
+    <path d="M17.88,43.98L14.68,48.08L19.00,45.19Z" fill="#F6A65A" opacity="0.48"/>
+    <path d="M32.62,13.50L32.08,9.95L31.52,13.50Z" fill="#F6A65A" opacity="0.45"/>
+    <path d="M15.52,23.57L6.34,20.07L14.93,24.83Z" fill="#F6A65A" opacity="0.15"/>
+    <path d="M13.50,32.09L5.59,32.65L13.51,32.82Z" fill="#F6A65A" opacity="0.43"/>
+    <path d="M48.67,40.08L52.96,40.87L49.41,38.33Z" fill="#F6A65A" opacity="0.36"/>
+    <path d="M27.58,14.01L23.58,3.71L25.86,14.52Z" fill="#F6A65A" opacity="0.49"/>
+    <path d="M49.36,38.42L54.34,39.35L49.78,37.15Z" fill="#F6A65A" opacity="0.29"/>
+    <path d="M15.80,40.94L8.74,45.30L16.08,41.43Z" fill="#F6A65A" opacity="0.17"/>
+    <path d="M13.88,35.78L8.24,37.69L14.14,36.84Z" fill="#F6A65A" opacity="0.40"/>
+    <path d="M15.81,40.97L10.54,44.91L16.49,42.10Z" fill="#F6A65A" opacity="0.28"/>
+    <path d="M50.36,29.70L56.38,28.19L50.19,28.59Z" fill="#F6A65A" opacity="0.24"/>
+    <path d="M25.14,14.81L21.99,9.25L23.96,15.33Z" fill="#F6A65A" opacity="0.38"/>
+    <path d="M50.49,32.69L55.17,32.41L50.50,31.96Z" fill="#F6A65A" opacity="0.44"/>
+    <path d="M43.89,46.18L51.32,54.10L44.47,45.67Z" fill="#F6A65A" opacity="0.37"/>
+    <path d="M41.19,15.92L45.10,6.52L39.73,15.17Z" fill="#F6A65A" opacity="0.18"/>
+    <path d="M47.50,42.11L56.37,47.16L47.92,41.43Z" fill="#F6A65A" opacity="0.19"/>
+    <path d="M21.10,46.97L19.41,51.10L22.55,47.93Z" fill="#F6A65A" opacity="0.37"/>
+    <path d="M29.37,13.67L27.01,5.26L27.84,13.96Z" fill="#F6A65A" opacity="0.40"/>
+    <path d="M17.95,44.04L10.49,51.27L18.49,44.65Z" fill="#F6A65A" opacity="0.22"/>
+    <path d="M43.72,46.31L49.80,53.13L44.12,45.98Z" fill="#F6A65A" opacity="0.35"/>
+    <path d="M50.21,28.67L61.11,25.67L49.95,27.47Z" fill="#F6A65A" opacity="0.46"/>
+    <path d="M49.09,39.12L57.11,41.23L49.64,37.64Z" fill="#F6A65A" opacity="0.24"/>
+    <path d="M50.48,30.86L55.11,29.49L50.30,29.14Z" fill="#F6A65A" opacity="0.32"/>
+    <path d="M48.82,24.28L59.72,18.31L48.36,23.34Z" fill="#F6A65A" opacity="0.31"/>
+    <path d="M14.84,38.92L10.95,41.00L15.14,39.62Z" fill="#F6A65A" opacity="0.18"/>
+    <path d="M47.39,42.29L57.86,48.04L48.06,41.21Z" fill="#F6A65A" opacity="0.35"/>
+    <path d="M33.84,50.41L35.52,62.20L34.44,50.34Z" fill="#F6A65A" opacity="0.44"/>
+    <path d="M28.95,50.26L28.96,54.36L30.06,50.41Z" fill="#F6A65A" opacity="0.28"/>
+    <path d="M43.52,46.48L48.14,51.55L44.04,46.05Z" fill="#F6A65A" opacity="0.46"/>
+    <path d="M16.18,22.36L9.01,19.55L15.28,24.02Z" fill="#F6A65A" opacity="0.27"/>
+    <path d="M15.40,23.82L7.61,20.68L15.04,24.60Z" fill="#F6A65A" opacity="0.33"/>
+    <path d="M49.62,26.32L55.27,23.68L49.23,25.23Z" fill="#F6A65A" opacity="0.29"/>
+    <path d="M44.38,45.76L48.80,49.32L45.38,44.80Z" fill="#F6A65A" opacity="0.16"/>
+    <path d="M47.28,42.43L55.99,47.70L47.68,41.83Z" fill="#F6A65A" opacity="0.22"/>
+    <path d="M14.89,39.06L5.57,44.04L15.44,40.28Z" fill="#F6A65A" opacity="0.36"/>
+    <path d="M24.34,15.14L20.53,9.34L22.95,15.85Z" fill="#F6A65A" opacity="0.47"/>
+    <path d="M22.92,48.12L18.48,56.97L23.46,48.41Z" fill="#F6A65A" opacity="0.20"/>
+    <path d="M13.74,29.03L4.15,27.97L13.64,29.67Z" fill="#F6A65A" opacity="0.47"/>
+    <circle cx="32" cy="32" r="19" fill="url(#disc)"/>
+    <circle cx="32" cy="32" r="19" fill="#000" filter="url(#mottle)" opacity="0.7"/>
+    <circle cx="32" cy="32" r="18.7" fill="none" stroke="#F2C230" stroke-width="1.4" opacity="0.55" filter="url(#soft)"/>
+  </g>
 </svg>
