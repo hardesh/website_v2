@@ -15,7 +15,8 @@ if (!process.env.GOODREADS_USER_ID && fs.existsSync(path.join(ROOT, '.env'))) {
 }
 const USER = (process.env.GOODREADS_USER_ID || GOODREADS_USER_ID).trim();
 
-const SHELVES = ['currently-reading', 'read', 'to-read'];
+// Shelves shown on /bookshelf. Add 'to-read' to also show books as "Up next".
+const SHELVES = ['currently-reading', 'read'];
 const OUT = path.join(ROOT, 'data', 'books.json');
 const UA = 'harshaldeshpande.info bookshelf sync';
 

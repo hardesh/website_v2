@@ -52,10 +52,10 @@ export const site = {
       intro: 'Essays and longer posts. Each one is a single markdown file, written the same way as the travel diaries.',
     },
     bookshelf: {
-      description: 'Books I’ve read, am reading or keep meaning to, synced from Goodreads.',
+      description: 'Books I’ve read and am reading, synced from Goodreads.',
       heading: 'What I’m',
       headingEm: 'reading.',
-      intro: 'Books I’ve read, am reading, or keep meaning to. Recommendations welcome.',
+      intro: 'Books I’ve read and the ones I’m reading now. Recommendations welcome.',
     },
   },
 };

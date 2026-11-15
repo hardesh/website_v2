@@ -28,7 +28,7 @@ const pages = [
   ['Travel', '/travel', 'Travel stories with a world map of places visited.'],
   ['Blog', '/blog', 'Essays and longer posts.'],
   ['Notes', '/notes', pageSummary('notes', 'Working notes.')],
-  ['Bookshelf', '/bookshelf', 'Books read, being read and up next (from Goodreads).'],
+  ['Bookshelf', '/bookshelf', 'Books read and currently being read (from Goodreads).'],
   ['Podcasts', '/podcasts', pageSummary('podcasts', 'Favourite podcasts.')],
 ];
 
