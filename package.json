@@ -9,7 +9,7 @@
     "prebuild": "node scripts/copy-travel-images.mjs && node scripts/generate-llms.mjs && node scripts/generate-og.mjs",
     "build": "next build",
     "lint": "eslint .",
-    "books": "node scripts/sync-goodreads.mjs"
+    "books": "node scripts/sync-hardcover.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

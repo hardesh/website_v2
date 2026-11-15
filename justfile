@@ -142,9 +142,9 @@ header-image file:
     cp "{{file}}" public/images/horizon.jpg
     @echo "✓ Header image replaced (public/images/horizon.jpg)"
 
-# Pull Goodreads shelves into data/books.json
+# Pull your Hardcover library (reading + read) into data/books.json (needs HARDCOVER_TOKEN in .env)
 books:
-    node scripts/sync-goodreads.mjs
+    node scripts/sync-hardcover.mjs
 
 # ── Dev ────────────────────────────────────────────────────────────────
 

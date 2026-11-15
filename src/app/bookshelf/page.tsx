@@ -48,7 +48,7 @@ export default function Bookshelf() {
             })}
           </ul>
         ) : (
-          <p className="empty">The shelf syncs from Goodreads every night. Nothing here yet.</p>
+          <p className="empty">The shelf syncs from Hardcover every night. Nothing here yet.</p>
         )}
       </main>
       <Footer />
