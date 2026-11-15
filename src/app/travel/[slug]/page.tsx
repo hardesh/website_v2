@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     path: post.url,
     image: `/og/travel-${post.slug}.jpg`,
     type: 'article',
-    publishedTime: post.date,
+    publishedTime: post.date || undefined,
     markdownAlternate: `${post.url}.md`,
   });
 }
@@ -45,8 +45,7 @@ export default async function TravelStory({ params }: { params: Promise<{ slug: 
             '@type': 'Article',
             headline: post.title,
             description: post.summary,
-            datePublished: post.date,
-            dateModified: post.date,
+            ...(post.date ? { datePublished: post.date, dateModified: post.date } : {}),
             url: abs(post.url),
             mainEntityOfPage: abs(post.url),
             image: [abs(`/og/travel-${post.slug}.jpg`), ...(post.cover ? [abs(post.cover.src)] : [])],

@@ -1,6 +1,8 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import EntryCard, { type CardData } from './EntryCard';
 import TravelMap, { type MapPin } from './TravelMap';
 
@@ -9,19 +11,18 @@ export interface TravelItem extends CardData {
   lat?: number;
   lon?: number;
   group?: string;
-  pinSide?: 'left' | 'right';
 }
 
 interface Props {
   items: TravelItem[]; // newest first
   places: { name: string; lat: number; lon: number }[];
   home: { name: string; lat: number; lon: number };
+  /** The story marked `home: true` (Pune), shown in its own row above the grid. */
+  homeStory?: TravelItem;
 }
 
-const autoSide = (lon: number): 'left' | 'right' => (lon > 110 ? 'left' : 'right');
-
 /** Map + year filter + cards. The filter updates pins and cards together; places without a story always show. */
-export default function TravelIndex({ items, places, home }: Props) {
+export default function TravelIndex({ items, places, home, homeStory }: Props) {
   const [year, setYear] = useState('All');
   const years = useMemo(() => ['All', ...Array.from(new Set(items.map((i) => i.year).filter(Boolean)))], [items]);
   const shown = year === 'All' ? items : items.filter((i) => i.year === year);
@@ -37,7 +38,7 @@ export default function TravelIndex({ items, places, home }: Props) {
         existing.label += ` · ${e.title}`;
         continue;
       }
-      const pin: MapPin = { key, label: e.title, lat: e.lat, lon: e.lon, href: e.url, side: e.pinSide ?? autoSide(e.lon) };
+      const pin: MapPin = { key, label: e.title, lat: e.lat, lon: e.lon, href: e.url };
       byKey.set(key, pin);
       out.push(pin);
     }
@@ -45,14 +46,36 @@ export default function TravelIndex({ items, places, home }: Props) {
     for (const p of places) {
       const label = p.name.split(',')[0].trim();
       if (storyLabels.has(label.toLowerCase())) continue;
-      out.push({ key: `place:${p.name}`, label, lat: p.lat, lon: p.lon, side: autoSide(p.lon) });
+      out.push({ key: `place:${p.name}`, label, lat: p.lat, lon: p.lon });
     }
     return out;
   }, [shown, places]);
 
   return (
     <>
-      <TravelMap pins={pins} home={home} />
+      <TravelMap pins={pins} home={home} homeHref={homeStory?.url} />
+
+      {homeStory && (
+        <section className="wrap" style={{ paddingTop: 56 }} aria-labelledby="home-row-h">
+          <Link href={homeStory.url} className="home-row">
+            {homeStory.cover ? (
+              <Image className="home-row__img" src={homeStory.cover.src} alt={homeStory.cover.alt} width={homeStory.cover.width} height={homeStory.cover.height} sizes="(max-width: 760px) 100vw, 360px" />
+            ) : (
+              <div className="home-row__img home-row__img--empty" aria-hidden="true">
+                <span className="dot dot--ring" />
+              </div>
+            )}
+            <div className="home-row__text">
+              <p className="mono label-accent">Home</p>
+              <h2 id="home-row-h" className="home-row__title">
+                {homeStory.title}
+              </h2>
+              {homeStory.place && <p className="mono card__place">{homeStory.place}</p>}
+              {homeStory.summary && <p className="card__summary">{homeStory.summary}</p>}
+            </div>
+          </Link>
+        </section>
+      )}
 
       {years.length > 2 && (
         <section className="wrap" style={{ paddingTop: 56 }}>

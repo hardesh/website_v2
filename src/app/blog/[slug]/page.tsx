@@ -8,8 +8,12 @@ import JsonLd from '@/components/JsonLd';
 
 export const dynamicParams = false;
 
+// Static export fails on a dynamic route with no pages, so with no posts yet we emit one placeholder that renders the 404 page.
+const PLACEHOLDER = '_none';
+
 export function generateStaticParams() {
-  return getBlogPosts().map((p) => ({ slug: p.slug }));
+  const posts = getBlogPosts();
+  return posts.length ? posts.map((p) => ({ slug: p.slug })) : [{ slug: PLACEHOLDER }];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     path: post.url,
     image: `/og/blog-${post.slug}.jpg`,
     type: 'article',
-    publishedTime: post.date,
+    publishedTime: post.date || undefined,
     markdownAlternate: `${post.url}.md`,
   });
 }
@@ -45,8 +49,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             '@type': 'BlogPosting',
             headline: post.title,
             description: post.summary,
-            datePublished: post.date,
-            dateModified: post.date,
+            ...(post.date ? { datePublished: post.date, dateModified: post.date } : {}),
             url: abs(post.url),
             mainEntityOfPage: abs(post.url),
             image: [abs(`/og/blog-${post.slug}.jpg`)],

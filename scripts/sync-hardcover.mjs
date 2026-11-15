@@ -1,4 +1,4 @@
-// Pulls your Hardcover library (Currently Reading + Read) into data/books.json.
+// Pulls your Hardcover library (Currently Reading, Read, Want to Read) into data/books.json.
 // Used by `just books` and the nightly GitHub Action.
 //
 // Needs a Hardcover API token in HARDCOVER_TOKEN:
@@ -15,8 +15,7 @@ const API = 'https://api.hardcover.app/v1/graphql';
 const UA = 'harshaldeshpande.info bookshelf sync (github.com/hardesh/website_v2)';
 
 // Hardcover status ids → shelf names used by the Bookshelf page.
-// Add 1 ("Want to Read") → 'to-read' here to also show books as "Up next".
-const STATUSES = { 2: 'currently-reading', 3: 'read' };
+const STATUSES = { 2: 'currently-reading', 3: 'read', 1: 'to-read' };
 
 function token() {
   let t = process.env.HARDCOVER_TOKEN || '';

@@ -50,14 +50,19 @@ export default function BlogPost({ post, layout, older, newer }: Props) {
               </p>
               {post.kind === 'travel' && post.place && <p className="mono label-muted">{post.place}</p>}
               <p className="mono label-dim">
-                <time dateTime={post.date}>{fmtDate(post.date)}</time> · {post.readingMinutes} min read
+                {post.date && (
+                  <>
+                    <time dateTime={post.date}>{fmtDate(post.date)}</time> ·{' '}
+                  </>
+                )}
+                {post.readingMinutes} min read
               </p>
             </div>
             <div className="post-head__title">
               <h1 className="post-title">
                 <em>{post.title}</em>
               </h1>
-              {post.summary && <p className="standfirst">{post.summary}</p>}
+              {post.standfirst && <p className="standfirst">{post.standfirst}</p>}
             </div>
           </header>
 

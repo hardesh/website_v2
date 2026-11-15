@@ -18,7 +18,7 @@ export default function Footer({ variant = 'page' }: { variant?: 'page' | 'home'
   return (
     <footer className="footer">
       <div className="footer__inner">
-        <span className="mono">{site.name} · {site.home.name}</span>
+        <span className="mono">{site.name}</span>
         <nav aria-label="Social" className="footer__social">
           {site.social.map((s) => (
             <a key={s.href} className="mono" href={s.href} rel="me noopener">

@@ -18,6 +18,38 @@
     "addedAt": "2020-12-03"
   },
   {
+    "title": "Beyond Weird: Why Everything You Thought You Knew about Quantum Physics Is Different",
+    "author": "Philip Ball",
+    "cover": "https://assets.hardcover.app/external_data/4154671/5cf23ee6e94aca26d0760d6b54bd5f52f8551b37.jpeg",
+    "url": "https://hardcover.app/books/beyond-weird",
+    "shelf": "currently-reading",
+    "addedAt": "2026-11-15"
+  },
+  {
+    "title": "Apple in China: The Capture of the World's Greatest Company",
+    "author": "Patrick McGee",
+    "cover": "https://assets.hardcover.app/edition/32020183/7f228d4cbf8a065ff95e700bc20f39934140fd4d.jpeg",
+    "url": "https://hardcover.app/books/apple-in-china",
+    "shelf": "currently-reading",
+    "addedAt": "2026-11-15"
+  },
+  {
+    "title": "Toyota Production System: Beyond large-scale production",
+    "author": "Norman Bodek & Taiichi Ohno",
+    "cover": "https://assets.hardcover.app/edition/30583773/b0f2511fd6452bd441c8041d78317a8f62e61d1a.jpeg",
+    "url": "https://hardcover.app/books/toyota-production-system-beyond-large-scale-production",
+    "shelf": "currently-reading",
+    "addedAt": "2026-11-15"
+  },
+  {
+    "title": "Invent and Wander: The Collected Writings of Jeff Bezos",
+    "author": "Jeff Bezos & Walter Isaacson",
+    "cover": "https://assets.hardcover.app/external_data/2193337/0e4d6b84a7c2d9605719abd743e3ddf6bc70a6bf.jpeg",
+    "url": "https://hardcover.app/books/invent-and-wander",
+    "shelf": "read",
+    "addedAt": "2024-07-06"
+  },
+  {
     "title": "Never Split the Difference: Negotiating As If Your Life Depended On It",
     "author": "Tahl Raz & Chris Voss",
     "cover": "https://assets.hardcover.app/external_data/30224079/0759a0d9a1eb5763f6fa2bc0b84ed6dd337e2817.jpeg",
@@ -42,20 +74,36 @@
     "addedAt": "2024-07-06"
   },
   {
-    "title": "Invent and Wander: The Collected Writings of Jeff Bezos",
-    "author": "Jeff Bezos & Walter Isaacson",
-    "cover": "https://assets.hardcover.app/external_data/2193337/0e4d6b84a7c2d9605719abd743e3ddf6bc70a6bf.jpeg",
-    "url": "https://hardcover.app/books/invent-and-wander",
-    "shelf": "currently-reading",
-    "addedAt": "2024-07-06"
+    "title": "Product-Led Growth: How to Build a Product That Sells Itself",
+    "author": "Wes Bush",
+    "cover": "https://assets.hardcover.app/edition/30432692/8f4595ea755cdd042f2ad7b3c6f9a70d1f45a77f.jpeg",
+    "url": "https://hardcover.app/books/product-led-growth",
+    "shelf": "to-read",
+    "addedAt": "2023-07-17"
   },
   {
-    "title": "Principles: Life and Work",
-    "author": "Ray Dalio",
-    "cover": "https://assets.hardcover.app/book_mappings/7333193/5f43939efae5957168651fede87b76e5884c7b12.jpeg",
-    "url": "https://hardcover.app/books/principles",
-    "shelf": "currently-reading",
-    "addedAt": "2023-04-22"
+    "title": "Lean UX: Applying Lean Principles to Improve User Experience",
+    "author": "Josh Seiden & Jeff Gothelf",
+    "cover": "https://assets.hardcover.app/edition/12129591/ba8d2ddda1039323ef70d1c12630ac582e05009b.jpeg",
+    "url": "https://hardcover.app/books/lean-ux",
+    "shelf": "to-read",
+    "addedAt": "2023-07-17"
+  },
+  {
+    "title": "Interviewing Users: How to Uncover Compelling Insights",
+    "author": "Steve Portigal",
+    "cover": "https://assets.hardcover.app/external_data/59510124/84826ec93f665a33250553b6d3946ff0949f7af9.jpeg",
+    "url": "https://hardcover.app/books/interviewing-users",
+    "shelf": "to-read",
+    "addedAt": "2023-07-17"
+  },
+  {
+    "title": "The Mom Test: How to talk to customers & learn if your business is a good idea when everyone is lying to you",
+    "author": "Rob Fitzpatrick",
+    "cover": "https://assets.hardcover.app/external_data/59503290/4369c70d181add221954694365a4471edc6e411d.jpeg",
+    "url": "https://hardcover.app/books/the-mom-test",
+    "shelf": "to-read",
+    "addedAt": "2023-07-17"
   },
   {
     "title": "Principles for Dealing with the Changing World Order: Why Nations Succeed and Fail",
@@ -66,18 +114,34 @@
     "addedAt": "2023-04-22"
   },
   {
-    "title": "Build: An Unorthodox Guide to Making Things Worth Making",
-    "author": "Tony Fadell",
-    "cover": "https://assets.hardcover.app/edition/30426622/461f59ce8f3176435cb058435d98ba7d3404a9d0.jpeg",
-    "url": "https://hardcover.app/books/build",
-    "shelf": "read",
-    "addedAt": "2022-08-20"
+    "title": "Principles: Life and Work",
+    "author": "Ray Dalio",
+    "cover": "https://assets.hardcover.app/book_mappings/7333193/5f43939efae5957168651fede87b76e5884c7b12.jpeg",
+    "url": "https://hardcover.app/books/principles",
+    "shelf": "currently-reading",
+    "addedAt": "2023-04-22"
   },
   {
     "title": "The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change",
     "author": "Camille Fournier",
     "cover": "https://assets.hardcover.app/edition/30401041/08ec59bb97efa9b2b6fb604fb0d83a7e6614a17d.jpeg",
     "url": "https://hardcover.app/books/the-managers-path",
+    "shelf": "read",
+    "addedAt": "2022-08-20"
+  },
+  {
+    "title": "The Psychology of Money",
+    "author": "Morgan Housel",
+    "cover": "https://assets.hardcover.app/external_data/36306423/ccce3b20d3af77159067051e57a3bdad8d98ef50.jpeg",
+    "url": "https://hardcover.app/books/the-psychology-of-money",
+    "shelf": "read",
+    "addedAt": "2022-08-20"
+  },
+  {
+    "title": "Build: An Unorthodox Guide to Making Things Worth Making",
+    "author": "Tony Fadell",
+    "cover": "https://assets.hardcover.app/edition/30426622/461f59ce8f3176435cb058435d98ba7d3404a9d0.jpeg",
+    "url": "https://hardcover.app/books/build",
     "shelf": "read",
     "addedAt": "2022-08-20"
   },
@@ -90,28 +154,20 @@
     "addedAt": "2022-08-20"
   },
   {
-    "title": "How to Not Die Alone: The Surprising Science That Will Help You Find Love",
-    "author": "Logan Ury",
-    "cover": "https://assets.hardcover.app/edition/30395881/a3be25fdaf9045e3d678f648d3b06277112f7afc.jpeg",
-    "url": "https://hardcover.app/books/how-to-not-die-alone",
-    "shelf": "currently-reading",
-    "addedAt": "2022-08-20"
-  },
-  {
-    "title": "The Psychology of Money",
-    "author": "Morgan Housel",
-    "cover": "https://assets.hardcover.app/external_data/36306423/ccce3b20d3af77159067051e57a3bdad8d98ef50.jpeg",
-    "url": "https://hardcover.app/books/the-psychology-of-money",
-    "shelf": "read",
-    "addedAt": "2022-08-20"
-  },
-  {
     "title": "The Hard Thing About Hard Things: Building a Business When There Are No Easy Answers",
     "author": "Ben Horowitz",
     "cover": "https://assets.hardcover.app/edition/29262771/a444d69963297cbb1fce2786dcad9619cbae2802.jpeg",
     "url": "https://hardcover.app/books/the-hard-thing-about-hard-things",
     "shelf": "read",
     "addedAt": "2022-06-12"
+  },
+  {
+    "title": "Born Standing Up: A Comic's Life",
+    "author": "Steve Martin",
+    "cover": "https://assets.hardcover.app/edition/14899780/9fdcbe4320963c5632892a058f9add8d2b36e195.jpeg",
+    "url": "https://hardcover.app/books/born-standing-up",
+    "shelf": "to-read",
+    "addedAt": "2022-06-04"
   },
   {
     "title": "The Unusual Billionaires",
@@ -122,36 +178,28 @@
     "addedAt": "2021-06-06"
   },
   {
+    "title": "Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character",
+    "author": "Raymond Todd & Richard P. Feynman",
+    "cover": "https://assets.hardcover.app/external_data/37180772/8eccc86472aafb5c007a988009fc5ce9f27517f6.jpeg",
+    "url": "https://hardcover.app/books/surely-youre-joking-mr-feynman-adventures-of-a-curious-character",
+    "shelf": "to-read",
+    "addedAt": "2021-05-19"
+  },
+  {
+    "title": "User Friendly: How the Hidden Rules of Design Are Changing the Way We Live, Work, and Play",
+    "author": "Cliff Kuang & Robert Fabricant",
+    "cover": "https://assets.hardcover.app/edition/30408152/content.jpeg",
+    "url": "https://hardcover.app/books/user-friendly",
+    "shelf": "to-read",
+    "addedAt": "2021-05-19"
+  },
+  {
     "title": "Do It Today: Overcome Procrastination, Improve Productivity, and Achieve More Meaningful Things",
     "author": "Darius Foroux",
     "cover": "https://assets.hardcover.app/external_data/59777833/d8346837902a8c1cd889f2413d6f379385470913.jpeg",
     "url": "https://hardcover.app/books/do-it-today",
     "shelf": "read",
     "addedAt": "2021-02-09"
-  },
-  {
-    "title": "Solid State Electronic Devices",
-    "author": "Sanjay Banerjee Ben Streetman",
-    "cover": "https://assets.hardcover.app/external_data/4611222/66c63f3c43dffa2d45817b7ae6b95e836ba73da0.jpeg",
-    "url": "https://hardcover.app/books/solid-state-electronic-devices-1972",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "J.D. Lee Concise Inorganic Chemistry For Jee",
-    "author": "Sudarsan Guha",
-    "cover": "https://assets.hardcover.app/external_data/4611220/853f5a02593647f83a8105b343e43e8a10558077.jpeg",
-    "url": "https://hardcover.app/books/jd-lee-concise-inorganic-chemistry-for-jee",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "Ready Player One",
-    "author": "Ernest Cline",
-    "cover": "https://assets.hardcover.app/edition/300803/c501e9ecf651b4e38801d2f9778ef03091472e25.jpeg",
-    "url": "https://hardcover.app/books/ready-player-one",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
   },
   {
     "title": "Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry and Engineering",
@@ -166,6 +214,54 @@
     "author": "Stephen Hawking",
     "cover": "https://assets.hardcover.app/edition/30893057/f6c9aff56f1cc7fed000ee577d537f36d0377f02.jpeg",
     "url": "https://hardcover.app/books/black-holes-the-reith-lectures",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Statistical Mechanics, 3e",
+    "author": "Ray Kumar Pathria & Paul D. Beale",
+    "cover": "https://assets.hardcover.app/external_data/4611221/bb38d2c2db146167fbd8d325078515e3935954cd.jpeg",
+    "url": "https://hardcover.app/books/statistical-mechanics-3e",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Inferno",
+    "author": "Dan Brown",
+    "cover": "https://assets.hardcover.app/edition/28329759/2234a0f5-e7ce-4b2c-93a4-6ae4f8ad1bfc.jpg",
+    "url": "https://hardcover.app/books/inferno",
+    "shelf": "to-read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Solid State Electronic Devices",
+    "author": "Sanjay Banerjee Ben Streetman",
+    "cover": "https://assets.hardcover.app/external_data/4611222/66c63f3c43dffa2d45817b7ae6b95e836ba73da0.jpeg",
+    "url": "https://hardcover.app/books/solid-state-electronic-devices-1972",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Introduction to Quantum Mechanics",
+    "author": "David J. Griffiths & Darrell F. Schroeter",
+    "cover": "https://assets.hardcover.app/edition/31528197/d30e2b1d43db8fe4b214e52603ad899c8449f6b4.jpeg",
+    "url": "https://hardcover.app/books/introduction-to-quantum-mechanics",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "J.D. Lee Concise Inorganic Chemistry For Jee",
+    "author": "Sudarsan Guha",
+    "cover": "https://assets.hardcover.app/external_data/4611220/853f5a02593647f83a8105b343e43e8a10558077.jpeg",
+    "url": "https://hardcover.app/books/jd-lee-concise-inorganic-chemistry-for-jee",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "cover": "https://assets.hardcover.app/external_data/3079446/025508ad141a225e671e35b4cc3f897382fbd3da.jpeg",
+    "url": "https://hardcover.app/books/a-brief-history-of-time",
     "shelf": "read",
     "addedAt": "2020-07-04"
   },
@@ -186,26 +282,10 @@
     "addedAt": "2020-07-04"
   },
   {
-    "title": "A Brief History of Time",
-    "author": "Stephen Hawking",
-    "cover": "https://assets.hardcover.app/external_data/3079446/025508ad141a225e671e35b4cc3f897382fbd3da.jpeg",
-    "url": "https://hardcover.app/books/a-brief-history-of-time",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "Introduction to Quantum Mechanics",
-    "author": "David J. Griffiths & Darrell F. Schroeter",
-    "cover": "https://assets.hardcover.app/edition/31528197/d30e2b1d43db8fe4b214e52603ad899c8449f6b4.jpeg",
-    "url": "https://hardcover.app/books/introduction-to-quantum-mechanics",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "Statistical Mechanics, 3e",
-    "author": "Ray Kumar Pathria & Paul D. Beale",
-    "cover": "https://assets.hardcover.app/external_data/4611221/bb38d2c2db146167fbd8d325078515e3935954cd.jpeg",
-    "url": "https://hardcover.app/books/statistical-mechanics-3e",
+    "title": "Ready Player One",
+    "author": "Ernest Cline",
+    "cover": "https://assets.hardcover.app/edition/300803/c501e9ecf651b4e38801d2f9778ef03091472e25.jpeg",
+    "url": "https://hardcover.app/books/ready-player-one",
     "shelf": "read",
     "addedAt": "2020-07-04"
   }

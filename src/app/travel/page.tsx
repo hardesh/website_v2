@@ -10,8 +10,10 @@ const s = site.sections.travel;
 export const metadata = pageMeta({ title: 'Travel', description: s.description, path: '/travel' });
 
 export default function TravelPage() {
-  const posts = getTravelPosts();
-  const items: TravelItem[] = posts.map((p) => ({
+  const all = getTravelPosts();
+  const homePost = all.find((p) => p.home);
+  const posts = all.filter((p) => !p.home);
+  const toItem = (p: (typeof all)[number]): TravelItem => ({
     url: p.url,
     title: p.title,
     place: p.place,
@@ -23,13 +25,13 @@ export default function TravelPage() {
     lat: p.lat,
     lon: p.lon,
     group: p.group,
-    pinSide: p.pinSide,
-  }));
+  });
+  const items = posts.map(toItem);
   return (
     <>
       <PageHeading eyebrow={`Travel · ${posts.length} ${posts.length === 1 ? 'story' : 'stories'}`} heading={s.heading} headingEm={s.headingEm} intro={s.intro} />
       <main id="main">
-        <TravelIndex items={items} places={getPlaces()} home={site.home} />
+        <TravelIndex items={items} places={getPlaces()} home={site.home} homeStory={homePost ? toItem(homePost) : undefined} />
       </main>
       <Footer />
     </>

@@ -11,8 +11,7 @@ export function rss(title: string, path: string, description: string, posts: Pos
       <title>${esc(p.title)}</title>
       <link>${site.url}${p.url}</link>
       <guid isPermaLink="true">${site.url}${p.url}</guid>
-      <pubDate>${new Date(p.date + 'T00:00:00Z').toUTCString()}</pubDate>
-      <description>${esc(p.summary)}</description>
+${p.date ? `      <pubDate>${new Date(p.date + 'T00:00:00Z').toUTCString()}</pubDate>\n` : ''}      <description>${esc(p.summary)}</description>
     </item>`,
     )
     .join('\n');
@@ -24,7 +23,7 @@ export function rss(title: string, path: string, description: string, posts: Pos
     <description>${esc(description)}</description>
     <language>en</language>
     <atom:link href="${link}/rss.xml" rel="self" type="application/rss+xml"/>
-${posts[0] ? `    <lastBuildDate>${new Date(posts[0].date + 'T00:00:00Z').toUTCString()}</lastBuildDate>\n` : ''}${items}
+${posts[0]?.date ? `    <lastBuildDate>${new Date(posts[0].date + 'T00:00:00Z').toUTCString()}</lastBuildDate>\n` : ''}${items}
   </channel>
 </rss>
 `;

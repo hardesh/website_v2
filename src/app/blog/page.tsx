@@ -20,8 +20,14 @@ export default function BlogIndex() {
       <PageHeading eyebrow="Blog" heading={s.heading} headingEm={s.headingEm} intro={s.intro} />
       <main id="main">
         {posts.length === 0 && (
-          <Split label="Posts">
-            <p className="empty">Nothing here yet.</p>
+          <Split label="Coming soon">
+            <p className="empty ul">
+              The first posts are on their way. Until then, I write now and then on{' '}
+              <a href={site.substack} rel="noopener">
+                Substack ↗
+              </a>
+              .
+            </p>
           </Split>
         )}
         {[...byYear].map(([year, list]) => (

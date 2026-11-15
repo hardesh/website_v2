@@ -54,7 +54,7 @@ export default function TopBar({ name, nav, showToggle = true }: Props) {
             <path d="M15 5l-7 7 7 7" />
           </svg>
         </button>
-        <nav className="tabs" aria-label="Pages" ref={tabs}>
+        <nav className="tabs" aria-label="Pages" ref={tabs} data-at-start={atStart} data-at-end={atEnd}>
           {nav.map((t) => (
             <Link key={t.href} href={t.href} className="mono" aria-current={isCurrent(t.href) ? 'page' : undefined}>
               {t.label}

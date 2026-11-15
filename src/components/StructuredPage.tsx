@@ -3,7 +3,7 @@ import PageHeading from './PageHeading';
 import Sections from './Sections';
 import Footer from './Footer';
 
-/** Now / Work / Notes / Podcasts: image heading + numbered sections from one markdown file. */
+/** Now / Work / Podcasts: image heading + numbered sections from one markdown file. */
 export default function StructuredPage({ slug }: { slug: string }) {
   const page = getPage(slug);
   const heading = page.heading ?? (page.headingEm ? '' : page.title);

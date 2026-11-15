@@ -3,7 +3,7 @@ export const site = {
   name: 'Harshal Deshpande',
   url: 'https://harshaldeshpande.info',
   description:
-    'Harshal Deshpande builds robots for a living. Travel stories, essays, notes and what he is up to lately.',
+    'Harshal Deshpande builds robots for a living. Travel stories, essays and what he is up to lately.',
   jobTitle: 'CTO',
   worksFor: 'Peppermint Robots',
   locale: 'en',
@@ -23,7 +23,6 @@ export const site = {
     { label: 'Work', href: '/work' },
     { label: 'Travel', href: '/travel' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Notes', href: '/notes' },
     { label: 'Bookshelf', href: '/bookshelf' },
     { label: 'Podcasts', href: '/podcasts' },
   ],
@@ -50,6 +49,12 @@ export const site = {
       heading: 'Long-form,',
       headingEm: 'now and then.',
       intro: 'Essays and longer posts. Each one is a single markdown file, written the same way as the travel diaries.',
+    },
+    wantToRead: {
+      description: 'Books on my want-to-read list, synced from Hardcover.',
+      heading: 'Want to',
+      headingEm: 'read.',
+      intro: 'Books I’ve lined up next, newest additions first. Recommendations still welcome.',
     },
     bookshelf: {
       description: 'Books I’ve read and am reading, synced from Hardcover.',

@@ -142,7 +142,11 @@ header-image file:
     cp "{{file}}" public/images/horizon.jpg
     @echo "✓ Header image replaced (public/images/horizon.jpg)"
 
-# Pull your Hardcover library (reading + read) into data/books.json (needs HARDCOVER_TOKEN in .env)
+# Regenerate the favicons in src/app/ (icon1.svg, icon2.png, apple-icon.png, favicon.ico)
+icons:
+    node scripts/generate-icons.mjs
+
+# Pull your Hardcover library (reading, read, want to read) into data/books.json (needs HARDCOVER_TOKEN in .env)
 books:
     node scripts/sync-hardcover.mjs
 

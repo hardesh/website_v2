@@ -35,7 +35,10 @@ interface PostBase {
   title: string;
   date: string; // YYYY-MM-DD
   year: string;
+  /** Front-matter summary, or the body's first sentence when there is none (cards, meta, RSS). */
   summary: string;
+  /** Front-matter summary only: shown under the title, where the fallback would just repeat the body. */
+  standfirst: string;
   draft: boolean;
   body: string;
   raw: string;
@@ -50,7 +53,8 @@ export interface TravelPost extends PostBase {
   lat?: number;
   lon?: number;
   group?: string;
-  pinSide?: 'left' | 'right';
+  /** `home: true`: the Home row on /travel and the home ring on the map, not a grid card. */
+  home: boolean;
 }
 
 export interface BlogPost extends PostBase {
@@ -114,7 +118,7 @@ export function imageInfo(publicSrc: string, alt = '', fsPath?: string): ImageIn
   }
 }
 
-/* ── pages (about, now, work, notes, podcasts) ───────────────────────── */
+/* ── pages (about, now, work, podcasts) ─────────────────────────────── */
 
 export function getPage(slug: string): Page {
   const raw = fs.readFileSync(path.join(CONTENT, `${slug}.md`), 'utf8');
@@ -147,7 +151,6 @@ function readTravel(slug: string): TravelPost | null {
   const cover = coverName
     ? imageInfo(`/travel/${slug}/${coverName}`, str(data.cover_alt) || str(data.title), path.join(TRAVEL, slug, coverName))
     : undefined;
-  const side = str(data.pin_side);
   return {
     kind: 'travel',
     slug,
@@ -156,6 +159,7 @@ function readTravel(slug: string): TravelPost | null {
     date,
     year: date.slice(0, 4),
     summary: str(data.summary) || firstSentence(content),
+    standfirst: str(data.summary),
     draft: data.draft === true,
     body: content.trim(),
     raw,
@@ -165,7 +169,7 @@ function readTravel(slug: string): TravelPost | null {
     lat: num(data.lat),
     lon: num(data.lon),
     group: str(data.group) || undefined,
-    pinSide: side === 'left' || side === 'right' ? side : undefined,
+    home: data.home === true,
   };
 }
 
@@ -202,6 +206,7 @@ function readBlog(file: string): BlogPost {
     date,
     year: date.slice(0, 4),
     summary: str(data.summary) || firstSentence(content),
+    standfirst: str(data.summary),
     draft: data.draft === true,
     body: content.trim(),
     raw,

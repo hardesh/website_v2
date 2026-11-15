@@ -22,9 +22,11 @@ export default function EntryCard({ e, priority = false }: { e: CardData; priori
       )}
       <div className="card__head">
         <h3 className="card__title">{e.title}</h3>
-        <time className="mono label-dim" dateTime={e.date}>
-          {e.dateLabel}
-        </time>
+        {e.date && (
+          <time className="mono label-dim" dateTime={e.date}>
+            {e.dateLabel}
+          </time>
+        )}
       </div>
       {e.place && <p className="mono card__place">{e.place}</p>}
       {e.summary && <p className="card__summary">{e.summary}</p>}

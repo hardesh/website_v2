@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import site from '@site';
 import { getPage } from '@/lib/content';
@@ -8,6 +9,25 @@ import Prose from '@/components/Prose';
 import JsonLd from '@/components/JsonLd';
 import horizon from '../../public/images/horizon.jpg';
 
+/** Turns the `label:` settings in about.md into CSS variables for the "About" label. Unknown or empty values are skipped. */
+function labelVars(raw: unknown): CSSProperties {
+  if (!raw || typeof raw !== 'object') return {};
+  const o = raw as Record<string, unknown>;
+  const text = (v: unknown) => (typeof v === 'number' || typeof v === 'string' ? String(v).trim() : '');
+  const vars: Record<string, string> = {};
+  const set = (name: string, value: string) => {
+    if (value && /^[#a-zA-Z0-9.,()%\s-]+$/.test(value)) vars[name] = value;
+  };
+  set('--label-size', /^\d+(\.\d+)?$/.test(text(o.size)) ? `${text(o.size)}px` : text(o.size));
+  set('--label-weight', text(o.weight));
+  set('--label-spacing', text(o.spacing));
+  if (o.font === 'serif' || o.font === 'mono') vars['--label-font'] = `var(--${o.font})`;
+  if (o.case === 'uppercase' || o.case === 'none') vars['--label-case'] = o.case;
+  set('--label-color', text(o.color));
+  if (o.shadow === false) vars['--label-shadow'] = 'none';
+  return vars as CSSProperties;
+}
+
 export function generateMetadata() {
   const about = getPage('about');
   return pageMeta({ description: about.description || site.description, path: '/' });
@@ -16,6 +36,7 @@ export function generateMetadata() {
 export default function Home() {
   const about = getPage('about');
   const lead = typeof about.data.lead === 'string' ? about.data.lead : '';
+  const labelStyle = labelVars(about.data.label);
   const image = about.headerImage;
 
   return (
@@ -36,7 +57,9 @@ export default function Home() {
 
       <main id="main" className="home__main">
         <Image className="home__portrait" src="/images/portrait.jpg" alt={site.name} width={180} height={180} priority />
-        <h1 className="mono home__label">About</h1>
+        <h1 className="mono home__label" style={labelStyle}>
+          {about.title}
+        </h1>
         <Prose className="home__about ul" markdown={`${lead ? `**${lead}** ` : ''}${about.body}`} />
       </main>
 
