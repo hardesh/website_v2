@@ -18,6 +18,22 @@
     "addedAt": "2020-12-03"
   },
   {
+    "title": "An Elegant Puzzle: Systems of Engineering Management",
+    "author": "Will Larson",
+    "cover": "https://assets.hardcover.app/external_data/59930330/d66911803a64a92caf73f9954ec8f2ba40dc8470.jpeg",
+    "url": "https://hardcover.app/books/an-elegant-puzzle",
+    "shelf": "currently-reading",
+    "addedAt": "2026-11-15"
+  },
+  {
+    "title": "The Impossible Factory",
+    "author": "Josh Dean",
+    "cover": "https://assets.hardcover.app/edition/32942332/8b22cd86c935dc6dc6d1072135f04f8ca92579b9.jpeg",
+    "url": "https://hardcover.app/books/the-impossible-factory",
+    "shelf": "currently-reading",
+    "addedAt": "2026-11-15"
+  },
+  {
     "title": "Beyond Weird: Why Everything You Thought You Knew about Quantum Physics Is Different",
     "author": "Philip Ball",
     "cover": "https://assets.hardcover.app/external_data/4154671/5cf23ee6e94aca26d0760d6b54bd5f52f8551b37.jpeg",
@@ -26,10 +42,10 @@
     "addedAt": "2026-11-15"
   },
   {
-    "title": "Apple in China: The Capture of the World's Greatest Company",
-    "author": "Patrick McGee",
-    "cover": "https://assets.hardcover.app/edition/32020183/7f228d4cbf8a065ff95e700bc20f39934140fd4d.jpeg",
-    "url": "https://hardcover.app/books/apple-in-china",
+    "title": "The Money Trap: Lost Illusions Inside the Tech Bubble",
+    "author": "Alok Sama",
+    "cover": "https://assets.hardcover.app/edition/31887106/d197af585e0e485e9dff3161ae0809c3007d7b57.jpeg",
+    "url": "https://hardcover.app/books/the-money-trap-lost-illusions-inside-the-tech-bubble",
     "shelf": "currently-reading",
     "addedAt": "2026-11-15"
   },
@@ -42,11 +58,27 @@
     "addedAt": "2026-11-15"
   },
   {
+    "title": "Apple in China: The Capture of the World's Greatest Company",
+    "author": "Patrick McGee",
+    "cover": "https://assets.hardcover.app/edition/32020183/7f228d4cbf8a065ff95e700bc20f39934140fd4d.jpeg",
+    "url": "https://hardcover.app/books/apple-in-china",
+    "shelf": "currently-reading",
+    "addedAt": "2026-11-15"
+  },
+  {
     "title": "Invent and Wander: The Collected Writings of Jeff Bezos",
     "author": "Jeff Bezos & Walter Isaacson",
     "cover": "https://assets.hardcover.app/external_data/2193337/0e4d6b84a7c2d9605719abd743e3ddf6bc70a6bf.jpeg",
     "url": "https://hardcover.app/books/invent-and-wander",
     "shelf": "read",
+    "addedAt": "2024-07-06"
+  },
+  {
+    "title": "Elon Musk",
+    "author": "Walter Isaacson",
+    "cover": "https://assets.hardcover.app/external_data/4441004/cdb91445698a819ff71cce27aef1eb97049822c0.jpeg",
+    "url": "https://hardcover.app/books/elon-musk-2023",
+    "shelf": "currently-reading",
     "addedAt": "2024-07-06"
   },
   {
@@ -62,14 +94,6 @@
     "author": "Walter Isaacson",
     "cover": "https://assets.hardcover.app/edition/32532938/c5133774ff1b430957da528b676af0a4b73a55ce.jpeg",
     "url": "https://hardcover.app/books/steve-jobs",
-    "shelf": "currently-reading",
-    "addedAt": "2024-07-06"
-  },
-  {
-    "title": "Elon Musk",
-    "author": "Walter Isaacson",
-    "cover": "https://assets.hardcover.app/external_data/4441004/cdb91445698a819ff71cce27aef1eb97049822c0.jpeg",
-    "url": "https://hardcover.app/books/elon-musk-2023",
     "shelf": "currently-reading",
     "addedAt": "2024-07-06"
   },
@@ -130,6 +154,14 @@
     "addedAt": "2022-08-20"
   },
   {
+    "title": "How to Not Die Alone: The Surprising Science That Will Help You Find Love",
+    "author": "Logan Ury",
+    "cover": "https://assets.hardcover.app/edition/30395881/a3be25fdaf9045e3d678f648d3b06277112f7afc.jpeg",
+    "url": "https://hardcover.app/books/how-to-not-die-alone",
+    "shelf": "read",
+    "addedAt": "2022-08-20"
+  },
+  {
     "title": "The Psychology of Money",
     "author": "Morgan Housel",
     "cover": "https://assets.hardcover.app/external_data/36306423/ccce3b20d3af77159067051e57a3bdad8d98ef50.jpeg",
@@ -143,14 +175,6 @@
     "cover": "https://assets.hardcover.app/edition/30426622/461f59ce8f3176435cb058435d98ba7d3404a9d0.jpeg",
     "url": "https://hardcover.app/books/build",
     "shelf": "read",
-    "addedAt": "2022-08-20"
-  },
-  {
-    "title": "Dopamine Nation: Finding Balance in the Age of Indulgence",
-    "author": "Anna Lembke",
-    "cover": "https://assets.hardcover.app/external_data/59992796/2ec15bc7214c3c4c8d47ee4784262d3458a7739c.jpeg",
-    "url": "https://hardcover.app/books/dopamine-nation",
-    "shelf": "currently-reading",
     "addedAt": "2022-08-20"
   },
   {
@@ -202,6 +226,54 @@
     "addedAt": "2021-02-09"
   },
   {
+    "title": "The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life",
+    "author": "Mark Manson",
+    "cover": "https://assets.hardcover.app/external_data/60312705/349d672806012b975ccf59191c5e89385bb4fb7f.jpeg",
+    "url": "https://hardcover.app/books/the-subtle-art-of-not-giving-a-f-ck",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "cover": "https://assets.hardcover.app/external_data/3079446/025508ad141a225e671e35b4cc3f897382fbd3da.jpeg",
+    "url": "https://hardcover.app/books/a-brief-history-of-time",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Inferno",
+    "author": "Dan Brown",
+    "cover": "https://assets.hardcover.app/edition/28329759/2234a0f5-e7ce-4b2c-93a4-6ae4f8ad1bfc.jpg",
+    "url": "https://hardcover.app/books/inferno",
+    "shelf": "to-read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Introduction to Quantum Mechanics",
+    "author": "David J. Griffiths & Darrell F. Schroeter",
+    "cover": "https://assets.hardcover.app/edition/31528197/d30e2b1d43db8fe4b214e52603ad899c8449f6b4.jpeg",
+    "url": "https://hardcover.app/books/introduction-to-quantum-mechanics",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Solid State Electronic Devices",
+    "author": "Sanjay Banerjee Ben Streetman",
+    "cover": "https://assets.hardcover.app/external_data/4611222/66c63f3c43dffa2d45817b7ae6b95e836ba73da0.jpeg",
+    "url": "https://hardcover.app/books/solid-state-electronic-devices-1972",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
+    "title": "Ready Player One",
+    "author": "Ernest Cline",
+    "cover": "https://assets.hardcover.app/edition/300803/c501e9ecf651b4e38801d2f9778ef03091472e25.jpeg",
+    "url": "https://hardcover.app/books/ready-player-one",
+    "shelf": "read",
+    "addedAt": "2020-07-04"
+  },
+  {
     "title": "Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry and Engineering",
     "author": "Steven H. Strogatz",
     "cover": "https://assets.hardcover.app/external_data/4611223/ef04cee4d03adf17cb59f31a2f7d5e392c789627.jpeg",
@@ -226,30 +298,6 @@
     "addedAt": "2020-07-04"
   },
   {
-    "title": "Inferno",
-    "author": "Dan Brown",
-    "cover": "https://assets.hardcover.app/edition/28329759/2234a0f5-e7ce-4b2c-93a4-6ae4f8ad1bfc.jpg",
-    "url": "https://hardcover.app/books/inferno",
-    "shelf": "to-read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "Solid State Electronic Devices",
-    "author": "Sanjay Banerjee Ben Streetman",
-    "cover": "https://assets.hardcover.app/external_data/4611222/66c63f3c43dffa2d45817b7ae6b95e836ba73da0.jpeg",
-    "url": "https://hardcover.app/books/solid-state-electronic-devices-1972",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "Introduction to Quantum Mechanics",
-    "author": "David J. Griffiths & Darrell F. Schroeter",
-    "cover": "https://assets.hardcover.app/edition/31528197/d30e2b1d43db8fe4b214e52603ad899c8449f6b4.jpeg",
-    "url": "https://hardcover.app/books/introduction-to-quantum-mechanics",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
     "title": "J.D. Lee Concise Inorganic Chemistry For Jee",
     "author": "Sudarsan Guha",
     "cover": "https://assets.hardcover.app/external_data/4611220/853f5a02593647f83a8105b343e43e8a10558077.jpeg",
@@ -258,34 +306,10 @@
     "addedAt": "2020-07-04"
   },
   {
-    "title": "A Brief History of Time",
-    "author": "Stephen Hawking",
-    "cover": "https://assets.hardcover.app/external_data/3079446/025508ad141a225e671e35b4cc3f897382fbd3da.jpeg",
-    "url": "https://hardcover.app/books/a-brief-history-of-time",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
     "title": "The Theory of Everything: The Origin and Fate of the Universe",
     "author": "Stephen Hawking",
     "cover": "https://assets.hardcover.app/edition/31163077/b8ca18cdfe1c0de39eb902621f4ec92c59d4b099.jpeg",
     "url": "https://hardcover.app/books/the-theory-of-everything-the-origin-and-fate-of-the-universe-2002",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life",
-    "author": "Mark Manson",
-    "cover": "https://assets.hardcover.app/external_data/60312705/349d672806012b975ccf59191c5e89385bb4fb7f.jpeg",
-    "url": "https://hardcover.app/books/the-subtle-art-of-not-giving-a-f-ck",
-    "shelf": "read",
-    "addedAt": "2020-07-04"
-  },
-  {
-    "title": "Ready Player One",
-    "author": "Ernest Cline",
-    "cover": "https://assets.hardcover.app/edition/300803/c501e9ecf651b4e38801d2f9778ef03091472e25.jpeg",
-    "url": "https://hardcover.app/books/ready-player-one",
     "shelf": "read",
     "addedAt": "2020-07-04"
   }
