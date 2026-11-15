@@ -31,7 +31,7 @@ export default function Bookshelf() {
             <BookShelf key={g.shelf} id={g.shelf} label={`${String(i + 1).padStart(2, '0')} · ${g.label}`} books={g.books} eagerCount={i === 0 ? 8 : 0} />
           ))
         ) : (
-          <p className={`empty ${shelfStyles.shelf}`}>The shelf syncs from Hardcover every night. Nothing here yet.</p>
+          <p className={`empty ${shelfStyles.shelf}`}>The shelf syncs from Hardcover every week. Nothing here yet.</p>
         )}
 
         {wantCount > 0 && (

@@ -4,7 +4,7 @@ Next.js (App Router, static export) site, deployed to GitHub Pages by `.github/w
 
 - Run `just` to see the everyday commands (`just travel`, `just blog`, `just photo`, `just place`, `just ship`, `just publish` …).
 - Content: `content/*.md` (pages), `content/travel/<slug>/index.md` (+ photos), `content/blog/<slug>.md`.
-- Data: `data/places.json` (map pins without a story), `data/books.json` (Hardcover, synced nightly, never edit by hand).
+- Data: `data/places.json` (map pins without a story), `data/books.json` (Hardcover, synced weekly, never edit by hand).
 - Settings: `site.config.ts` (header image, home fade, default blog layout, nav, socials).
 - On `npm run build`, `prebuild` writes `public/llms.txt`, `public/llms-full.txt`, post `.md` copies, OG images and travel photos (all git-ignored).
 
@@ -72,8 +72,8 @@ It opens as a 3D globe with a Globe / Flat switch (change `DEFAULT_MODE` in that
 To change which statuses are synced, edit `STATUSES` in `scripts/sync-hardcover.mjs`
 (Hardcover ids: 1 Want to Read, 2 Currently Reading, 3 Read, 4 Paused, 5 Did Not Finish).
 
-**How it updates:** `.github/workflows/books.yml` runs every night at 03:17 UTC. If anything changed, it commits
-`data/books.json` and starts the deploy workflow, so a book you mark in Hardcover shows up by the next morning.
+**How it updates:** `.github/workflows/books.yml` runs once a week, on Mondays at 03:17 UTC. If anything changed, it
+commits `data/books.json` and starts the deploy workflow, so a book you mark in Hardcover shows up within a week.
 Run it sooner from Actions → "Sync bookshelf from Hardcover" → Run workflow.
 
 **Token setup** (and again whenever the token expires):

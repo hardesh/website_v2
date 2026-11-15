@@ -1,5 +1,5 @@
 // Pulls your Hardcover library (Currently Reading, Read, Want to Read) into data/books.json.
-// Used by `just books` and the nightly GitHub Action.
+// Used by `just books` and the weekly GitHub Action.
 //
 // Needs a Hardcover API token in HARDCOVER_TOKEN:
 //   - locally: put `HARDCOVER_TOKEN=...` in .env (git-ignored)
