@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "node scripts/copy-travel-images.mjs",
+    "predev": "node scripts/copy-travel-images.mjs && node scripts/copy-map-worker.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/copy-travel-images.mjs && node scripts/generate-llms.mjs && node scripts/generate-og.mjs",
+    "prebuild": "node scripts/copy-travel-images.mjs && node scripts/copy-map-worker.mjs && node scripts/generate-llms.mjs && node scripts/generate-og.mjs",
     "build": "next build",
     "lint": "eslint .",
     "books": "node scripts/sync-hardcover.mjs"
@@ -14,7 +14,7 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "image-size": "^2.1.0",
-    "maplibre-gl": "^5.24.1",
+    "maplibre-gl": "^6.18.0",
     "next": "^15.5.29",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",

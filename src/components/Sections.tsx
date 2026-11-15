@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Section } from '@/lib/content';
 import Prose from './Prose';
 import Split from './Split';
+import styles from './Sections.module.css';
 
 /** Renders a page's ## sections: entries (### Title | meta + bullets) or big link rows. */
 export default function Sections({ sections }: { sections: Section[] }) {
@@ -36,14 +37,14 @@ export default function Sections({ sections }: { sections: Section[] }) {
             </ul>
           ) : (
             <>
-              {s.body && <Prose markdown={s.body} className="entry__body ul" />}
+              {s.body && <Prose bare markdown={s.body} className={`${styles.body} ul`} />}
               {s.entries.map((e, j) => (
-                <div key={j} className="entry">
-                  <div className="entry__head">
-                    <h3 className="section-h">{e.title}</h3>
+                <div key={j} className={styles.entry}>
+                  <div className={styles.head}>
+                    <h3 className={styles.title}>{e.title}</h3>
                     {e.meta && <span className="mono label-dim">{e.meta}</span>}
                   </div>
-                  {e.body && <Prose markdown={e.body} className="entry__body ul" />}
+                  {e.body && <Prose bare markdown={e.body} className={`${styles.body} ul`} />}
                 </div>
               ))}
             </>

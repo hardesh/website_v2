@@ -1,9 +1,10 @@
 import site from '@site';
+import styles from './Footer.module.css';
 
 export default function Footer({ variant = 'page' }: { variant?: 'page' | 'home' }) {
   if (variant === 'home') {
     return (
-      <footer className="home-footer">
+      <footer className={styles.home}>
         {site.social.map((s) => (
           <a key={s.href} className="mono" href={s.href} rel="me noopener">
             {s.label}
@@ -16,10 +17,10 @@ export default function Footer({ variant = 'page' }: { variant?: 'page' | 'home'
     );
   }
   return (
-    <footer className="footer">
-      <div className="footer__inner">
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
         <span className="mono">{site.name}</span>
-        <nav aria-label="Social" className="footer__social">
+        <nav aria-label="Social" className={styles.social}>
           {site.social.map((s) => (
             <a key={s.href} className="mono" href={s.href} rel="me noopener">
               {s.label}

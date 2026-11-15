@@ -4,6 +4,7 @@ import { getBooks, type Book } from '@/lib/content';
 import { pageMeta } from '@/lib/seo';
 import PageHeading from '@/components/PageHeading';
 import BookShelf from '@/components/BookShelf';
+import shelfStyles from '@/components/BookShelf.module.css';
 import Footer from '@/components/Footer';
 
 const s = site.sections.bookshelf;
@@ -30,12 +31,12 @@ export default function Bookshelf() {
             <BookShelf key={g.shelf} id={g.shelf} label={`${String(i + 1).padStart(2, '0')} · ${g.label}`} books={g.books} eagerCount={i === 0 ? 8 : 0} />
           ))
         ) : (
-          <p className="empty shelf">The shelf syncs from Hardcover every night. Nothing here yet.</p>
+          <p className={`empty ${shelfStyles.shelf}`}>The shelf syncs from Hardcover every night. Nothing here yet.</p>
         )}
 
         {wantCount > 0 && (
-          <div className="shelf">
-            <Link className="row shelf__more" href="/bookshelf/want-to-read">
+          <div className={shelfStyles.shelf}>
+            <Link className={`row ${shelfStyles.more}`} href="/bookshelf/want-to-read">
               <span className="row__title">Want to read</span>
               <span className="mono row__meta">{wantCount} books →</span>
             </Link>

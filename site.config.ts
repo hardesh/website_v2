@@ -19,7 +19,7 @@ export const site = {
   home: { name: 'Pune', lat: 18.52, lon: 73.86 },
 
   nav: [
-    { label: 'Now', href: '/now' },
+    { label: 'Now & Beliefs', href: '/now' },
     { label: 'Work', href: '/work' },
     { label: 'Travel', href: '/travel' },
     { label: 'Blog', href: '/blog' },

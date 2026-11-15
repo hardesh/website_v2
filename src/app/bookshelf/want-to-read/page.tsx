@@ -4,6 +4,7 @@ import { getBooks } from '@/lib/content';
 import { breadcrumbs, pageMeta } from '@/lib/seo';
 import PageHeading from '@/components/PageHeading';
 import BookShelf from '@/components/BookShelf';
+import shelfStyles from '@/components/BookShelf.module.css';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 
@@ -17,7 +18,7 @@ export default function WantToRead() {
     <>
       <PageHeading eyebrow="Bookshelf" heading={s.heading} headingEm={s.headingEm} intro={s.intro} />
       <main id="main" className="wrap">
-        <p className="shelf" style={{ paddingTop: 'clamp(40px, 6vw, 72px)', margin: 0 }}>
+        <p className={shelfStyles.shelf} style={{ paddingTop: 'clamp(40px, 6vw, 72px)', margin: 0 }}>
           <Link className="mono label-dim" href="/bookshelf">
             ← Back to the bookshelf
           </Link>
@@ -25,7 +26,7 @@ export default function WantToRead() {
         {books.length ? (
           <BookShelf id="to-read" label="Want to read" books={books} eagerCount={8} />
         ) : (
-          <p className="empty shelf">Nothing on the list right now.</p>
+          <p className={`empty ${shelfStyles.shelf}`}>Nothing on the list right now.</p>
         )}
       </main>
       <Footer />

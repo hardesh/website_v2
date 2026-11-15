@@ -1,0 +1,32 @@
+/* Entries on Now / Work: "### Title | meta" plus bullets. */
+.entry {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 8px;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.title {
+  margin: 0;
+  font-size: clamp(26px, 2.36vw, 34px);
+  font-style: italic;
+  font-weight: 700;
+}
+.body ul,
+.body ol {
+  margin: 16px 0 24px;
+  padding-left: 22px;
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.body p {
+  margin: 16px 0 24px;
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--muted);
+}

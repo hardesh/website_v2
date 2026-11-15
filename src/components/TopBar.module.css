@@ -1,0 +1,128 @@
+.bar {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 20px var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 28px;
+}
+.name {
+  margin-right: auto;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 600;
+}
+.tabsWrap {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+}
+.tabs a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.tabs a[aria-current='page'] {
+  color: var(--hover);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.arrow {
+  display: none;
+  flex: none;
+  width: 36px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  color: var(--fg);
+  cursor: pointer;
+  padding: 0;
+}
+.arrow[data-hidden='true'] {
+  visibility: hidden;
+}
+/* Home has no toggle, but keeps an invisible one so the tabs sit in the same place on every page. */
+.toggleSpacer {
+  visibility: hidden;
+}
+
+/* Tablets: the 12px labels look small, so scale the top bar up a little (phones and desktop unchanged).
+   .toggle is passed to ThemeToggle by TopBar. */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .bar .tabs a,
+  .bar .toggle {
+    font-size: clamp(12px, 1.5vw, 15px); /* 12px at 800px wide, 13.5px at 900px, 15px from 1000px */
+  }
+  .bar .tabs {
+    gap: 0 clamp(16px, 2vw, 24px);
+  }
+  .name {
+    font-size: clamp(20px, 2.1vw, 24px);
+  }
+}
+
+/* Phones: name + toggle on the first row, tabs as a scrolling strip with arrows on the second. */
+@media (max-width: 760px) {
+  .tabsWrap {
+    order: 3;
+    width: 100%;
+    border-top: 1px solid var(--line);
+  }
+  .tabs {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    padding: 0 8px;
+    /* Snap to the padded edge, so the first tab rests at scroll 0 (not 8px in, under the fade). */
+    scroll-padding-inline: 8px;
+    /* Fade only the edges that have more tabs beyond them. */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  }
+  .tabs[data-at-start='true'] {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 14px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 14px), transparent);
+  }
+  .tabs[data-at-end='true'] {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 14px);
+    mask-image: linear-gradient(to right, transparent, #000 14px);
+  }
+  .tabs[data-at-start='true'][data-at-end='true'] {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tabs a {
+    white-space: nowrap;
+    flex: none;
+    scroll-snap-align: start;
+  }
+  .arrow {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabs {
+    scroll-behavior: auto;
+  }
+}

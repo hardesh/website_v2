@@ -1,0 +1,144 @@
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 64px var(--gutter) 0;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.head > * {
+  margin: 0;
+}
+.legend {
+  color: var(--dim);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+/* Only meaningful with a mouse or trackpad. */
+@media (hover: none) {
+  .hint {
+    display: none;
+  }
+}
+.modes {
+  display: flex;
+  gap: 8px;
+}
+.modes :global(.year-btn) {
+  min-height: 36px;
+  padding: 0 14px;
+}
+.map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  min-height: 320px;
+  max-height: 640px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  z-index: 0; /* keep the map's panes below the rest of the page UI */
+}
+.loading {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  color: var(--dim);
+}
+
+/* Map pins (MapLibre markers, built in TravelMap.tsx): a dot, with the name shown on hover or keyboard focus. */
+/* No `position` here: MapLibre makes markers position:absolute and places them with a transform. Overriding it
+   (this module loads after maplibre-gl.css) drops every pin into normal flow, stacking them down the map.
+   The absolute marker is already the containing block for the label below. */
+.pin {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+.pin:hover,
+.pin:focus-visible {
+  z-index: 2;
+}
+.dot {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.story {
+  cursor: pointer;
+}
+.story:hover .dot,
+.story:focus-visible .dot {
+  background: var(--hover);
+  transform: scale(1.2);
+}
+.label {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  padding: 4px 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms;
+}
+.pin:hover .label,
+.pin:focus-visible .label {
+  opacity: 1;
+}
+.home {
+  /* Always light on the satellite imagery, whatever the theme. */
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #ede6da;
+  box-shadow: 0 0 0 2px rgba(16, 13, 12, 0.6);
+}
+
+/* MapLibre controls, restyled to match the site. */
+.map :global(.maplibregl-ctrl-group) {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--bg);
+}
+.map :global(.maplibregl-ctrl-group button) {
+  width: 36px;
+  height: 36px;
+}
+.map :global(.maplibregl-ctrl-group button + button) {
+  border-top: 1px solid var(--line);
+}
+.map :global(.maplibregl-ctrl-group button .maplibregl-ctrl-icon) {
+  filter: none;
+}
+:global(:root:not([data-theme='light'])) .map :global(.maplibregl-ctrl-group button .maplibregl-ctrl-icon) {
+  filter: invert(1); /* MapLibre's icons are dark; flip them on the dark theme */
+}
+.map :global(.maplibregl-ctrl-attrib) {
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+.map :global(.maplibregl-ctrl-attrib a) {
+  color: var(--muted);
+}
+.map :global(.maplibregl-ctrl-attrib-button) {
+  background-color: var(--bg);
+}

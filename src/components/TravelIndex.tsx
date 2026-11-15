@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import EntryCard, { type CardData } from './EntryCard';
 import TravelMap, { type MapPin } from './TravelMap';
+import styles from './TravelIndex.module.css';
 
 export interface TravelItem extends CardData {
   year: string;
@@ -57,21 +58,21 @@ export default function TravelIndex({ items, places, home, homeStory }: Props) {
 
       {homeStory && (
         <section className="wrap" style={{ paddingTop: 56 }} aria-labelledby="home-row-h">
-          <Link href={homeStory.url} className="home-row">
+          <Link href={homeStory.url} className={styles.homeRow}>
             {homeStory.cover ? (
-              <Image className="home-row__img" src={homeStory.cover.src} alt={homeStory.cover.alt} width={homeStory.cover.width} height={homeStory.cover.height} sizes="(max-width: 760px) 100vw, 360px" />
+              <Image className={styles.homeImg} src={homeStory.cover.src} alt={homeStory.cover.alt} width={homeStory.cover.width} height={homeStory.cover.height} sizes="(max-width: 760px) 100vw, 360px" />
             ) : (
-              <div className="home-row__img home-row__img--empty" aria-hidden="true">
+              <div className={`${styles.homeImg} ${styles.homeImgEmpty}`} aria-hidden="true">
                 <span className="dot dot--ring" />
               </div>
             )}
-            <div className="home-row__text">
+            <div className={styles.homeText}>
               <p className="mono label-accent">Home</p>
-              <h2 id="home-row-h" className="home-row__title">
+              <h2 id="home-row-h" className={styles.homeTitle}>
                 {homeStory.title}
               </h2>
-              {homeStory.place && <p className="mono card__place">{homeStory.place}</p>}
-              {homeStory.summary && <p className="card__summary">{homeStory.summary}</p>}
+              {homeStory.place && <p className={`mono ${styles.homePlace}`}>{homeStory.place}</p>}
+              {homeStory.summary && <p className={styles.homeSummary}>{homeStory.summary}</p>}
             </div>
           </Link>
         </section>
@@ -79,7 +80,7 @@ export default function TravelIndex({ items, places, home, homeStory }: Props) {
 
       {years.length > 2 && (
         <section className="wrap" style={{ paddingTop: 56 }}>
-          <div role="group" aria-label="Filter by year" className="years">
+          <div role="group" aria-label="Filter by year" className={styles.years}>
             {years.map((y) => (
               <button key={y} type="button" className="mono year-btn" aria-pressed={y === year} onClick={() => setYear(y)}>
                 {y}
@@ -92,7 +93,7 @@ export default function TravelIndex({ items, places, home, homeStory }: Props) {
       <section className="wrap" style={{ paddingTop: 48 }} aria-label="Stories">
         <h2 className="visually-hidden">Stories</h2>
         {shown.length ? (
-          <div className="cards">
+          <div className={styles.cards}>
             {shown.map((e, i) => (
               <EntryCard key={e.url} e={e} priority={i === 0} />
             ))}

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
+import styles from './TopBar.module.css';
 
 interface Props {
   name: string;
@@ -44,35 +45,35 @@ export default function TopBar({ name, nav, showToggle = true }: Props) {
   const scroll = (dx: number) => tabs.current?.scrollBy({ left: dx });
 
   return (
-    <header className="topbar">
-      <Link href="/" className="topbar__name">
+    <header className={styles.bar}>
+      <Link href="/" className={styles.name}>
         {name}
       </Link>
-      <div className="tabs-wrap">
-        <button type="button" className="tab-arrow" onClick={() => scroll(-160)} aria-label="Scroll pages left" data-hidden={atStart} tabIndex={atStart ? -1 : 0}>
+      <div className={styles.tabsWrap}>
+        <button type="button" className={styles.arrow} onClick={() => scroll(-160)} aria-label="Scroll pages left" data-hidden={atStart} tabIndex={atStart ? -1 : 0}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
             <path d="M15 5l-7 7 7 7" />
           </svg>
         </button>
-        <nav className="tabs" aria-label="Pages" ref={tabs} data-at-start={atStart} data-at-end={atEnd}>
+        <nav className={styles.tabs} aria-label="Pages" ref={tabs} data-at-start={atStart} data-at-end={atEnd}>
           {nav.map((t) => (
             <Link key={t.href} href={t.href} className="mono" aria-current={isCurrent(t.href) ? 'page' : undefined}>
               {t.label}
             </Link>
           ))}
         </nav>
-        <button type="button" className="tab-arrow" onClick={() => scroll(160)} aria-label="Scroll pages right" data-hidden={atEnd} tabIndex={atEnd ? -1 : 0}>
+        <button type="button" className={styles.arrow} onClick={() => scroll(160)} aria-label="Scroll pages right" data-hidden={atEnd} tabIndex={atEnd ? -1 : 0}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
             <path d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
       {showToggle ? (
-        <ThemeToggle />
+        <ThemeToggle className={styles.toggle} />
       ) : (
         // Home has no toggle, but keeps an invisible one so the tabs sit in exactly the same place on every page.
-        <div className="toggle-spacer" aria-hidden="true" inert>
-          <ThemeToggle />
+        <div className={styles.toggleSpacer} aria-hidden="true" inert>
+          <ThemeToggle className={styles.toggle} />
         </div>
       )}
     </header>

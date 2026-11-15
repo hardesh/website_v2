@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type * as MapLibre from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import styles from './TravelMap.module.css';
 
 export interface MapPin {
   key: string;
@@ -66,8 +67,9 @@ export default function TravelMap({ pins, home, homeHref }: Props) {
     const init = async () => {
       let maplibregl: typeof MapLibre;
       try {
-        const mod = await import('maplibre-gl');
-        maplibregl = ((mod as unknown as { default?: typeof MapLibre }).default ?? mod) as typeof MapLibre;
+        maplibregl = await import('maplibre-gl'); // v6 is ESM-only: use the namespace, not a default export
+        // The bundler doesn't emit MapLibre's worker; scripts/copy-map-worker.mjs puts it in public/ (versioned to bust caches).
+        maplibregl.setWorkerUrl(`/maplibre/maplibre-gl-worker.mjs?v=${maplibregl.getVersion()}`);
       } catch {
         setFailed(true);
         return;
@@ -102,15 +104,19 @@ export default function TravelMap({ pins, home, homeHref }: Props) {
         setFailed(true); // e.g. WebGL unavailable
         return;
       }
+      // v6 reports a missing/blocked WebGL2 context as an 'error' event rather than throwing.
+      m.on('error', (e) => {
+        if (/webgl/i.test(String(e.error?.message ?? ''))) setFailed(true);
+      });
       m.touchZoomRotate.disableRotation();
       m.keyboard.disableRotation();
       m.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
 
       // Home ring (Pune).
       const homeEl = document.createElement(homeHref ? 'a' : 'span');
-      homeEl.className = `map-pin map-pin--home${homeHref ? ' map-pin--story' : ''}`;
-      homeEl.innerHTML = '<span class="map-home"></span><span class="map-pin__label mono"></span>';
-      homeEl.querySelector('.map-pin__label')!.textContent = `Home, ${home.name}`;
+      homeEl.className = `${styles.pin}${homeHref ? ` ${styles.story}` : ''}`;
+      homeEl.innerHTML = `<span class="${styles.home}"></span><span class="${styles.label} mono"></span>`;
+      homeEl.querySelector(`.${styles.label}`)!.textContent = `Home, ${home.name}`;
       if (homeEl instanceof HTMLAnchorElement && homeHref) {
         homeEl.href = homeHref;
         homeEl.setAttribute('aria-label', `Home, ${home.name}`);
@@ -198,9 +204,9 @@ export default function TravelMap({ pins, home, homeHref }: Props) {
     markers.current.forEach((mk) => mk.remove());
     markers.current = pins.map((p) => {
       const el = document.createElement(p.href ? 'a' : 'span');
-      el.className = `map-pin${p.href ? ' map-pin--story' : ''}`;
-      el.innerHTML = '<span class="pin__dot"></span><span class="map-pin__label mono"></span>';
-      el.querySelector('.map-pin__label')!.textContent = p.label;
+      el.className = `${styles.pin}${p.href ? ` ${styles.story}` : ''}`;
+      el.innerHTML = `<span class="${styles.dot}"></span><span class="${styles.label} mono"></span>`;
+      el.querySelector(`.${styles.label}`)!.textContent = p.label;
       if (el instanceof HTMLAnchorElement && p.href) {
         const href = p.href;
         el.href = href;
@@ -215,12 +221,12 @@ export default function TravelMap({ pins, home, homeHref }: Props) {
   }, [pins, ready, router]);
 
   return (
-    <section className="map-section" aria-labelledby="map-h">
-      <div className="map-head">
+    <section className={styles.section} aria-labelledby="map-h">
+      <div className={styles.head}>
         <h2 id="map-h" className="mono label-accent">
           The map
         </h2>
-        <p className="mono map-legend">
+        <p className={`mono ${styles.legend}`}>
           <span>
             <span className="dot" aria-hidden="true" />
             Places
@@ -229,9 +235,9 @@ export default function TravelMap({ pins, home, homeHref }: Props) {
             <span className="dot dot--ring" aria-hidden="true" />
             Home, {home.name}
           </span>
-          <span className="map-hint">Shift + scroll to zoom</span>
+          <span className={styles.hint}>Shift + scroll to zoom</span>
         </p>
-        <div role="group" aria-label="Map view" className="map-modes">
+        <div role="group" aria-label="Map view" className={styles.modes}>
           {(['globe', 'flat'] as const).map((v) => (
             <button key={v} type="button" className="mono year-btn" aria-pressed={mode === v} onClick={() => setMode(v)}>
               {v === 'globe' ? 'Globe' : 'Flat'}
@@ -239,8 +245,8 @@ export default function TravelMap({ pins, home, homeHref }: Props) {
           ))}
         </div>
       </div>
-      <div ref={node} className="map" role="region" aria-label="Map of places I’ve been. Story pins open the story.">
-        {!ready && <p className="mono map__loading">{failed ? 'The map couldn’t load in this browser.' : 'Loading map…'}</p>}
+      <div ref={node} className={styles.map} role="region" aria-label="Map of places I’ve been. Story pins open the story.">
+        {(!ready || failed) && <p className={`mono ${styles.loading}`}>{failed ? 'The map couldn’t load in this browser.' : 'Loading map…'}</p>}
       </div>
     </section>
   );

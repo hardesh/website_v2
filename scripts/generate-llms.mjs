@@ -23,7 +23,7 @@ const pageSummary = (slug, fallback) => {
 
 const pages = [
   ['Home', '/', 'About Harshal Deshpande.'],
-  ['Now', '/now', pageSummary('now', 'What I’m up to lately.')],
+  ['Now & Beliefs', '/now', pageSummary('now', 'What I’m up to lately, and what I believe.')],
   ['Work', '/work', pageSummary('work', 'Work and experience.')],
   ['Travel', '/travel', 'Travel stories with a world map of places visited.'],
   ['Blog', '/blog', 'Essays and longer posts.'],

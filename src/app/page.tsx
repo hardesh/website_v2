@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import Prose from '@/components/Prose';
 import JsonLd from '@/components/JsonLd';
 import horizon from '../../public/images/horizon.jpg';
+import styles from './page.module.css';
 
 /** Turns the `label:` settings in about.md into CSS variables for the "About" label. Unknown or empty values are skipped. */
 function labelVars(raw: unknown): CSSProperties {
@@ -40,27 +41,27 @@ export default function Home() {
   const image = about.headerImage;
 
   return (
-    <div className="home">
-      <div className="home__horizon">
+    <div className={styles.home}>
+      <div className={styles.horizon}>
         {image === site.headerImage ? (
           <Image src={horizon} alt="" priority sizes="100vw" />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={image} alt="" />
         )}
-        {site.homeFade > 0 && <div className="home__fade" aria-hidden="true" style={{ height: `calc(${Math.min(1, site.homeFade) * 100}% + 2px)` }} />}
+        {site.homeFade > 0 && <div className={styles.fade} aria-hidden="true" style={{ height: `calc(${Math.min(1, site.homeFade) * 100}% + 2px)` }} />}
       </div>
 
-      <div className="home__top">
+      <div className={styles.top}>
         <TopBar name={site.name} nav={site.nav} showToggle={false} />
       </div>
 
-      <main id="main" className="home__main">
-        <Image className="home__portrait" src="/images/portrait.jpg" alt={site.name} width={180} height={180} priority />
-        <h1 className="mono home__label" style={labelStyle}>
+      <main id="main" className={styles.main}>
+        <Image className={styles.portrait} src="/images/portrait.jpg" alt={site.name} width={180} height={180} priority />
+        <h1 className={`mono ${styles.label}`} style={labelStyle}>
           {about.title}
         </h1>
-        <Prose className="home__about ul" markdown={`${lead ? `**${lead}** ` : ''}${about.body}`} />
+        <Prose bare className={`${styles.about} ul`} markdown={`${lead ? `**${lead}** ` : ''}${about.body}`} />
       </main>
 
       <Footer variant="home" />

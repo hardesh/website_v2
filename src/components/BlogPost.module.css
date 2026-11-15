@@ -1,0 +1,113 @@
+/* One travel story or blog post (also used by the 404 page for its heading). */
+.cover {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px var(--gutter) 0;
+}
+.coverFrame {
+  display: flex;
+  align-items: stretch;
+  height: clamp(300px, 48vw, 640px);
+  overflow: hidden;
+}
+.coverLeft {
+  width: 7%;
+  background: var(--yellow);
+  flex: none;
+}
+.coverPhoto {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.coverPhoto img {
+  object-fit: cover;
+}
+.coverRight {
+  width: 5%;
+  background: #0a0908;
+  flex: none;
+  border-left: 1px solid #ede6da;
+}
+.head {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 64px var(--gutter) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 48px);
+}
+.headText {
+  padding-top: clamp(48px, 7vw, 96px);
+}
+.meta {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.meta > * {
+  margin: 0;
+}
+.titleCol {
+  flex: 999 1 560px;
+  min-width: 0;
+  max-width: 760px;
+}
+.title {
+  margin: 0;
+  font-size: clamp(44px, 8vw, 104px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.title em {
+  font-weight: 600;
+}
+.standfirst {
+  margin: 28px 0 0;
+  font-size: clamp(22px, 1.94vw, 28px);
+  line-height: 1.4;
+  color: var(--muted);
+  font-style: italic;
+}
+.body {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 72px var(--gutter) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 48px);
+}
+.spacer {
+  flex: 1 1 220px;
+}
+.text {
+  flex: 999 1 560px;
+  min-width: 0;
+  max-width: 680px;
+}
+.pager {
+  max-width: var(--max);
+  margin: 120px auto 0;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+.pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+.pager a.next {
+  text-align: right;
+  align-items: flex-end;
+  grid-column: -2;
+}
+.pagerTitle {
+  font-size: clamp(26px, 2.22vw, 32px);
+  font-style: italic;
+  font-weight: 600;
+}

@@ -1,0 +1,27 @@
+.toggle {
+  min-height: 44px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+.toggle:hover {
+  color: var(--hover);
+}
+/* Dark (default): sun + "Light". Light: moon + "Dark". Driven by data-theme so there is no flash. */
+.iconMoon,
+.labelDark,
+:global(:root[data-theme='light']) .iconSun,
+:global(:root[data-theme='light']) .labelLight {
+  display: none;
+}
+:global(:root[data-theme='light']) .iconMoon {
+  display: block;
+}
+:global(:root[data-theme='light']) .labelDark {
+  display: inline;
+}

@@ -1,0 +1,59 @@
+/* Bookshelf: one labelled shelf with its grid of covers (also used by the bookshelf pages). */
+.shelf {
+  padding-top: clamp(56px, 8vw, 100px);
+}
+.shelf + .shelf {
+  padding-top: clamp(72px, 10vw, 128px);
+}
+.more {
+  border-bottom: 1px solid var(--line);
+}
+.label {
+  margin: 0 0 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+  gap: 40px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.book {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cover {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  background: var(--line);
+}
+.title {
+  font-size: 19px;
+  line-height: 1.25;
+  font-style: italic;
+  font-weight: 600;
+}
+.meta {
+  color: var(--dim);
+}
+
+@media (max-width: 760px) {
+  .books {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 12px;
+  }
+  .title {
+    font-size: 16px;
+  }
+  /* Two classes, so this beats the global .mono label size whatever order the stylesheets load in. */
+  .book .meta {
+    font-size: 10px;
+  }
+}

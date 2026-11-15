@@ -3,6 +3,7 @@ import Image from 'next/image';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { imageInfo } from '@/lib/content';
+import styles from './Prose.module.css';
 
 interface Props {
   markdown: string;
@@ -10,7 +11,10 @@ interface Props {
   baseUrl?: string;
   /** Folder on disk that relative image paths resolve against (for width/height). */
   baseDir?: string;
+  /** Extra class for the wrapper. */
   className?: string;
+  /** Skip the long-form prose styles (for short markdown snippets styled by the caller). */
+  bare?: boolean;
 }
 
 type ImgNode = { type: string; tagName?: string; properties?: Record<string, unknown> };
@@ -23,7 +27,7 @@ function resolve(src: string, baseUrl: string, baseDir?: string) {
 }
 
 /** Renders post/page markdown with the site's typography. Lone images become captioned figures. */
-export default function Prose({ markdown, baseUrl = '/', baseDir, className = 'prose' }: Props) {
+export default function Prose({ markdown, baseUrl = '/', baseDir, className, bare = false }: Props) {
   const components: Components = {
     p({ node, children }) {
       const kids = (node?.children ?? []).filter((c) => !(c.type === 'text' && !String((c as { value?: string }).value).trim()));
@@ -59,7 +63,7 @@ export default function Prose({ markdown, baseUrl = '/', baseDir, className = 'p
     },
   };
   return (
-    <div className={className}>
+    <div className={[bare ? '' : styles.prose, className].filter(Boolean).join(' ')}>
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
         {markdown}
       </ReactMarkdown>
