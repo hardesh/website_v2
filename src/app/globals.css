@@ -776,6 +776,17 @@ a.pin:hover .pin__label {
   padding: 0;
   list-style: none;
 }
+.shelf {
+  padding-top: clamp(56px, 8vw, 100px);
+}
+.shelf + .shelf {
+  padding-top: clamp(72px, 10vw, 128px);
+}
+.shelf__label {
+  margin: 0 0 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
 .book {
   display: flex;
   flex-direction: column;
