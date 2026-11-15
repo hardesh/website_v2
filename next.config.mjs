@@ -21,9 +21,13 @@ export default function nextConfig(phase) {
     poweredByHeader: false,
     // `next dev` and `next build` use separate folders, so building while the dev server runs can't break it.
     distDir: dev ? '.next-dev' : '.next',
-    webpack(config, { isServer }) {
-      if (dev && isServer) config.plugins.push(new WatchContentPlugin());
-      return config;
-    },
+    // Builds use Turbopack (Next 16's default) with no webpack config. `npm run dev` runs `next dev --webpack`
+    // so this plugin can reload the page when content/ or data/ changes.
+    ...(dev && {
+      webpack(config, { isServer }) {
+        if (isServer) config.plugins.push(new WatchContentPlugin());
+        return config;
+      },
+    }),
   };
 }
