@@ -1,0 +1,19 @@
+node_modules/
+.next/
+.next-dev/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env
+.DS_Store
+
+# Generated on every build by scripts/ (never edit by hand)
+public/llms.txt
+public/llms-full.txt
+public/og/
+public/blog/*.md
+public/travel/
+
+# Design handoff (reference material, not part of the site)
+handoff/
+website-react-handoff.zip
