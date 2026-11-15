@@ -9,6 +9,9 @@ const s = site.sections.bookshelf;
 const STATUS: Record<Book['shelf'], string> = { 'currently-reading': 'Reading', read: 'Read', 'to-read': 'Up next' };
 const ORDER: Book['shelf'][] = ['currently-reading', 'read', 'to-read'];
 
+/** "Zero to One: Notes on Startups…" → "Zero to One" (the full title stays in the tooltip and the data). */
+const shortTitle = (t: string) => t.split(/:\s/)[0].trim() || t;
+
 export const metadata = pageMeta({ title: 'Bookshelf', description: s.description, path: '/bookshelf' });
 
 export default function Bookshelf() {
@@ -28,7 +31,9 @@ export default function Bookshelf() {
                   ) : (
                     <div className="book__cover" aria-hidden="true" />
                   )}
-                  <span className="book__title">{b.title}</span>
+                  <span className="book__title" title={b.title}>
+                    {shortTitle(b.title)}
+                  </span>
                   <span className="mono book__meta">
                     {b.author} · {STATUS[b.shelf]}
                   </span>

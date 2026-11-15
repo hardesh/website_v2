@@ -76,9 +76,10 @@ const data = await gql(
 );
 
 const books = data.user_books.map((ub) => {
-  const authors = [...new Set((ub.book.contributions || []).map((c) => c.author?.name).filter(Boolean))];
+  const clean = (s) => String(s || '').replace(/\s+/g, ' ').trim();
+  const authors = [...new Set((ub.book.contributions || []).map((c) => clean(c.author?.name)).filter(Boolean))];
   return {
-    title: ub.book.title,
+    title: clean(ub.book.title),
     author: authors.slice(0, 2).join(' & '),
     cover: ub.edition?.image?.url || ub.book.image?.url || '',
     url: ub.book.slug ? `https://hardcover.app/books/${ub.book.slug}` : undefined,
