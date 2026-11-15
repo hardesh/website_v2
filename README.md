@@ -11,4 +11,4 @@ Next.js (App Router, static export) site, deployed to GitHub Pages by `.github/w
 Structured pages (Now, Work, Notes, Podcasts): `## Section`, then `### Entry | right-hand label` with bullets,
 or a section that is only a list of `- [Link](url) | label` rows.
 
-Setup on GitHub: Settings → Pages → Source: GitHub Actions. Add a repository variable `GOODREADS_USER_ID`.
+Setup on GitHub: Settings → Pages → Source: GitHub Actions. The Goodreads user id lives in `scripts/sync-goodreads.mjs`; the profile must be public for its shelf feeds to work.

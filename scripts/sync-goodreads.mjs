@@ -1,7 +1,10 @@
 // Pulls the Goodreads shelves (read, currently-reading, to-read) from their public RSS feeds into data/books.json.
-// Used by `just books` and the nightly GitHub Action. Needs GOODREADS_USER_ID (env or .env).
+// Used by `just books` and the nightly GitHub Action.
 import fs from 'node:fs';
 import path from 'node:path';
+
+// https://www.goodreads.com/user/show/18230617-harshal-deshpande (GOODREADS_USER_ID in the environment overrides it)
+const GOODREADS_USER_ID = '18230617';
 
 const ROOT = process.cwd();
 if (!process.env.GOODREADS_USER_ID && fs.existsSync(path.join(ROOT, '.env'))) {
@@ -10,11 +13,7 @@ if (!process.env.GOODREADS_USER_ID && fs.existsSync(path.join(ROOT, '.env'))) {
     if (m) process.env.GOODREADS_USER_ID = m[1];
   }
 }
-const USER = (process.env.GOODREADS_USER_ID || '').trim();
-if (!USER) {
-  console.error('✗ Set GOODREADS_USER_ID (in .env locally, or as a repository variable/secret in GitHub).');
-  process.exit(1);
-}
+const USER = (process.env.GOODREADS_USER_ID || GOODREADS_USER_ID).trim();
 
 const SHELVES = ['currently-reading', 'read', 'to-read'];
 const OUT = path.join(ROOT, 'data', 'books.json');
@@ -42,6 +41,12 @@ async function shelf(name) {
   for (let page = 1; page <= 20; page++) {
     const url = `https://www.goodreads.com/review/list_rss/${USER}?shelf=${name}&page=${page}`;
     const res = await fetch(url, { headers: { 'User-Agent': UA } });
+    if (res.status === 404) {
+      throw new Error(
+        `${name}: HTTP 404. Goodreads hides shelf feeds unless your profile is public: ` +
+          'goodreads.com → Settings → Privacy → "Who can view my profile" → "anyone (including search engines)".',
+      );
+    }
     if (!res.ok) throw new Error(`${name}: HTTP ${res.status}`);
     const xml = await res.text();
     const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];

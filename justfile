@@ -142,7 +142,7 @@ header-image file:
     cp "{{file}}" public/images/horizon.jpg
     @echo "✓ Header image replaced (public/images/horizon.jpg)"
 
-# Pull Goodreads shelves into data/books.json (needs GOODREADS_USER_ID in .env)
+# Pull Goodreads shelves into data/books.json
 books:
     node scripts/sync-goodreads.mjs
 
